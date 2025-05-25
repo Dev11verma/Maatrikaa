@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maatrika Organic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --accent: #007bff;
+      --nav-bg: #ffffff;
+      --text: #343a40;
+      --muted: #6c757d;
+      --card: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --border-radius: 10px;
+      --border-color: #dee2e6;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 220px;
+      height: 100vh;
+      background: var(--nav-bg);
+      position: fixed;
+      box-shadow: 2px 0 10px var(--shadow);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px var(--shadow);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      text-align: center;
+    }
+
+    nav li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 10px;
+      display: block;
+      border-radius: var(--border-radius);
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    nav li a:hover,
+    nav li a.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 2px 5px rgba(0, 102, 204, 0.3);
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 60px 40px;
+    }
+
+    section {
+      background: var(--card);
+      padding: 40px;
+      margin-bottom: 80px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 10px var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p {
+      text-align: center;
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 14px 40px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .product-item {
+      background: var(--card);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 10px var(--shadow);
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .product-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .product-details {
+      display: none;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 10px var(--shadow);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px var(--shadow);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card h4 {
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .testimonial-card .rating {
+      color: gold;
+      font-size: 1.2rem;
+      margin-top: 5px;
+    }
+
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .contact-section input,
+    .contact-section textarea {
+      padding: 12px;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+    }
+
+    .social-links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--nav-bg);
+      padding: 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
+    <ul>
+      <li><a href="#welcome" class="active">Welcome</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="welcome">
+      <h1>Welcome to Maatrika Organic</h1>
+      <p>Discover the goodness of nature through handmade, chemical-free skincare designed for all skin types. Your skin deserves purity.</p>
+      <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Explore Products</button>
+    </section>
+
+    <section id="products">
+      <h2>Our Products</h2>
+      <div class="product-list">
+        <div class="product-item">
+          <div class="product-name" onclick="toggleDetails(this)">Honey Facewash</div>
+          <div class="product-details">
+            <p>Made with organic honey and essential oils.</p>
+            <button>Buy Now</button>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-name" onclick="toggleDetails(this)">Floral Cleanser</div>
+          <div class="product-details">
+            <p>Infused with petals and pure rose extract.</p>
+            <button>Buy Now</button>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-name" onclick="toggleDetails(this)">Aloe Vera Cleanser</div>
+          <div class="product-details">
+            <p>Soothing cleanser for all skin types.</p>
+            <button>Buy Now</button>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-name" onclick="toggleDetails(this)">Lemon Facewash</div>
+          <div class="product-details">
+            <p>Refreshing citrus formula for oily skin.</p>
+            <button>Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <h2>Benefits of Choosing Maatrika</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Chemical-Free</h3>
+          <p>No sulfates, parabens, or preservatives.</p>
+        </div>
+        <div class="card">
+          <h3>Eco-Friendly</h3>
+          <p>Minimal packaging & biodegradable containers.</p>
+        </div>
+        <div class="card">
+          <h3>Handcrafted</h3>
+          <p>Made in small batches with love and care.</p>
+        </div>
+        <div class="card">
+          <h3>All Skin Types</h3>
+          <p>Gentle and effective for every skin tone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonial-grid">
+
+    <div class="testimonial-card">
+      <p>"The honey facewash changed my skin — so soft and glowing!"</p>
+      <h4>- Neha Patel</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"Love the natural scents and the gentle floral cleanser."</p>
+      <h4>- Rahul Singh</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"Eco-friendly packaging and amazing results. Highly recommend."</p>
+      <h4>- Priya Sharma</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"I’ve struggled with dryness for years — the aloe vera cleanser was a game changer."</p>
+      <h4>- Sakshi Mehra</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"Floral Cleanser smells divine and leaves my face feeling refreshed every time."</p>
+      <h4>- Ananya Jain</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"So gentle yet effective! My acne has reduced and my skin feels nourished."</p>
+      <h4>- Ishaan Malhotra</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"The lemon facewash keeps my oily skin in check — and it smells so fresh!"</p>
+      <h4>- Ritika Chauhan</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"I love that it’s all natural. My sensitive skin finally found its match."</p>
+      <h4>- Deepika Rao</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"Clean ingredients, zero irritation, and a noticeable glow — obsessed!"</p>
+      <h4>- Mohit Desai</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"It’s like a mini facial every morning. My skin looks healthier than ever."</p>
+      <h4>- Kriti Sharma</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"The products feel luxurious yet simple — I’ve completely switched to Maatrika."</p>
+      <h4>- Dev Verma</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"I always wanted something natural for my daily routine. Maatrika delivered beautifully."</p>
+      <h4>- Avani Soni</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"It’s hard to find products that work and are clean. Maatrika got both right."</p>
+      <h4>- Aarushi Sen</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>"Ever since I tried the honey facewash, I haven’t gone back to store brands."</p>
+      <h4>- Adhrisha Soni</h4>
+      <div class="rating">★★★★★</div>
+    </div>
+
+  </div>
+</section>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Maatrika Organic is dedicated to creating pure, handmade skincare products using traditional recipes and the finest natural ingredients. Our commitment to chemical-free formulas ensures healthy skin and a healthier planet.</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Maatrika Organic. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDetails(element) {
+      const details = element.nextElementSibling;
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
