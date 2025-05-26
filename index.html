@@ -273,10 +273,10 @@
   </style>
 </head>
 <body>
-  <nav>
+<nav>
     <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
     <ul>
-      <li><a href="#welcome" class="active">Welcome</a></li>
+      <li><a href="#welcome">Welcome</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#benefits">Benefits</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
@@ -285,46 +285,189 @@
     </ul>
   </nav>
 
-  <main>
-    <section id="welcome">
-      <h1>Welcome to Maatrika Organic</h1>
-      <p>Discover the goodness of nature through handmade, chemical-free skincare designed for all skin types. Your skin deserves purity.</p>
-      <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Explore Products</button>
-    </section>
 
-    <section id="products">
-      <h2>Our Products</h2>
-      <div class="product-list">
-        <div class="product-item">
-          <div class="product-name" onclick="toggleDetails(this)">Honey Facewash</div>
-          <div class="product-details">
-            <p>Made with organic honey and essential oils.</p>
-            <button>Buy Now</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-name" onclick="toggleDetails(this)">Floral Cleanser</div>
-          <div class="product-details">
-            <p>Infused with petals and pure rose extract.</p>
-            <button>Buy Now</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-name" onclick="toggleDetails(this)">Aloe Vera Cleanser</div>
-          <div class="product-details">
-            <p>Soothing cleanser for all skin types.</p>
-            <button>Buy Now</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-name" onclick="toggleDetails(this)">Lemon Facewash</div>
-          <div class="product-details">
-            <p>Refreshing citrus formula for oily skin.</p>
-            <button>Buy Now</button>
-          </div>
-        </div>
+  <main>
+    <section id="welcome" class="welcome-hero">
+  <div class="welcome-content">
+    <h1 class="animated-title">Welcome to <span>Maatrika Organic</span></h1>
+    <p class="animated-subtext">Unleashing the power of nature through handmade, chemical-free skincare.</p>
+    <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })" class="welcome-btn">
+      🌿 Explore Our Products
+    </button>
+  </div>
+</section>
+
+
+   <section id="products">
+  <h2>Our Products</h2>
+  <div class="product-list">
+
+    <div class="product-item">
+      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
+      <div class="product-details">
+        <p>Made with nutrient-rich rice extract for glowing skin.</p>
+        <button>Buy Now</button>
       </div>
-    </section>
+    </div>
+
+    <div class="product-item">
+      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
+      <div class="product-details">
+        <p>Infused with pure rose extract and floral petals.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
+      <div class="product-details">
+        <p>A soothing cleanser made with traditional ubtan herbs.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
+      <div class="product-details">
+        <p>Gentle and moisturizing soap made with pure milk.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
+      <div class="product-details">
+        <p>Refreshing turmeric formula for radiant and clear skin.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="Neem-soap.jpeg" alt="Herbal Neem Soap" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Herbal Neem Soap</div>
+      <div class="product-details">
+        <p>Coming Soon…</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
+      <div class="product-details">
+        <p>Coming Soon…</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="products">
+  <h2>Our Products</h2>
+  <div class="product-list">
+    <!-- Available Products -->
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
+      <div class="product-details">
+        <img src="Rice.jpg" alt="Golden Rice Glow" />
+        <p>Made with nutrient-rich rice extract for glowing skin.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
+      <div class="product-details">
+        <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" />
+        <p>Infused with pure rose extract and floral petals.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
+      <div class="product-details">
+        <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" />
+        <p>A soothing cleanser made with traditional ubtan herbs.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
+      <div class="product-details">
+        <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" />
+        <p>Gentle and moisturizing soap made with pure milk.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
+      <div class="product-details">
+        <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" />
+        <p>Refreshing turmeric formula for radiant and clear skin.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Neem Herbal Bar</div>
+      <div class="product-details">
+        <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" />
+        <p>Purifying neem formula for acne-prone skin.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Coming Soon Products -->
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Papaya Skin Polish</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Papaya Skin Polish" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Coffee Scrub Soap</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Coffee Scrub Soap" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Charcoal Detox Bar</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Charcoal Detox Bar" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Lavender Calming Cream</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Lavender Calming Cream" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Coconut Nourish Lotion</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Coconut Nourish Lotion" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Mint Refresh Gel</div>
+      <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Mint Refresh Gel" />
+        <p>Coming Soon...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <section id="benefits">
       <h2>Benefits of Choosing Maatrika</h2>
@@ -443,78 +586,63 @@
       <p>Maatrika Organic is dedicated to creating pure, handmade skincare products using traditional recipes and the finest natural ingredients. Our commitment to chemical-free formulas ensures healthy skin and a healthier planet.</p>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" tabindex="0" aria-label="Contact Us">
   <h2>Contact Us</h2>
 
-  <div class="contact-details">
-    <p><strong>Email:</strong>
-      <a href="mailto:we.maatrikaorganic@gmail.com">
-        we.maatrikaorganic@gmail.com
-      </a>
-    </p>
-
-    <p><strong>Phone:</strong>
-      <a href="tel:+919202142350">
-        +91 92021 42350
-      </a>
-    </p>
-
-    <p><strong>WhatsApp:</strong>
-      <a href="https://wa.me/919202142350?text=Hi" target="_blank" rel="noopener">
-        Chat with us
-      </a>
-    </p>
+  <div class="contact-details" style="margin-bottom: 20px;">
+    <p>📞 <a href="tel:+919202142350">+91 92021 42350</a></p>
+    <p>✉️ <a href="mailto:we.maatrikaorganic@gmail.com">we.maatrikaorganic@gmail.com</a></p>
   </div>
 
-  <div class="social-links" style="margin-top: 20px;">
-    <a href="https://instagram.com/maatrikaorganic" target="_blank">Instagram</a> |
-    <a href="https://facebook.com/maatrikaorganic" target="_blank">Facebook</a>
+  <div class="social-links">
+    <a href="https://instagram.com/maatrikaorganic" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://facebook.com/maatrikaorganic" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://wa.me/919202142350?text=Hi" target="_blank" rel="noopener noreferrer">WhatsApp</a>
   </div>
 </section>
-
   </main>
 
   <footer>
     &copy; 2025 Maatrika Organic. All rights reserved.
   </footer>
-
 <script>
-  // Toggle product details visibility
+  // Toggle product details
   function toggleDetails(element) {
     const details = element.nextElementSibling;
-    details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    if (details.style.display === 'block') {
+      details.style.display = 'none';
+    } else {
+      details.style.display = 'block';
+    }
   }
 
-  // Smooth scroll to sections
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
+  // Smooth scroll for nav links
+  const navLinks = document.querySelectorAll('nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
       e.preventDefault();
-      const targetId = this.getAttribute('href').slice(1);
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        window.scrollTo({
-          top: targetSection.offsetTop - 60, // adjust for navbar height
-          behavior: 'smooth'
-        });
-      }
+      const targetId = link.getAttribute('href').substring(1);
+      document.getElementById(targetId).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
   });
 
-  // Scroll spy: update nav links based on scroll position
-  window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('section');
-    const scrollPos = window.scrollY + 70; // offset for navbar
-
+  // Scroll spy
+  const sections = document.querySelectorAll('main section');
+  window.addEventListener('scroll', () => {
+    let current = '';
     sections.forEach(section => {
-      const id = section.getAttribute('id');
-      const navLink = document.querySelector(`nav a[href="#${id}"]`);
-
-      if (
-        section.offsetTop <= scrollPos &&
-        section.offsetTop + section.offsetHeight > scrollPos
-      ) {
-        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-        if (navLink) navLink.classList.add('active');
+      const sectionTop = section.offsetTop - 80;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
       }
     });
   });
