@@ -464,20 +464,46 @@
   </footer>
 
   <script>
+  // Toggle product details visibility
   function toggleDetails(element) {
     const details = element.nextElementSibling;
     details.style.display = details.style.display === 'block' ? 'none' : 'block';
   }
 
-  // Highlight active nav link on click
+  // Smooth scroll to sections
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function (e) {
-      document.querySelectorAll('nav a').forEach(navLink => {
-        navLink.classList.remove('active');
-      });
-      this.classList.add('active');
+      e.preventDefault();
+      const targetId = this.getAttribute('href').slice(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 60, // adjust for navbar height
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Scroll spy: update nav links based on scroll position
+  window.addEventListener('scroll', function () {
+    const sections = document.querySelectorAll('section');
+    const scrollPos = window.scrollY + 70; // offset for navbar
+
+    sections.forEach(section => {
+      const id = section.getAttribute('id');
+      const navLink = document.querySelector(`nav a[href="#${id}"]`);
+
+      if (
+        section.offsetTop <= scrollPos &&
+        section.offsetTop + section.offsetHeight > scrollPos
+      ) {
+        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+        if (navLink) navLink.classList.add('active');
+      }
     });
   });
 </script>
+
 </body>
 </html>
