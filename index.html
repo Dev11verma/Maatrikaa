@@ -464,20 +464,20 @@
   </footer>
 
   <script>
-    function toggleDetails(element) {
-      const details = element.nextElementSibling;
-      details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    }
+  function toggleDetails(element) {
+    const details = element.nextElementSibling;
+    details.style.display = details.style.display === 'block' ? 'none' : 'block';
+  }
 
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+  // Highlight active nav link on click
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      document.querySelectorAll('nav a').forEach(navLink => {
+        navLink.classList.remove('active');
       });
+      this.classList.add('active');
     });
-  </script>
+  });
+</script>
 </body>
 </html>
