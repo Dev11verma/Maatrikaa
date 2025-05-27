@@ -273,7 +273,22 @@
   </style>
 </head>
 <body>
-<nav>
+ <header>
+  <nav>
+    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
+    <ul>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- Dark mode toggle button inside the same nav -->
+    <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+  </nav>
+</header>
+
     <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
     <ul>
       <li><a href="#welcome">Welcome</a></li>
@@ -298,12 +313,69 @@
 </section>
 
 
-   <section id="products">
+ <style>
+  section {
+    margin-bottom: 50px;
+  }
+  h2 {
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    color: #2a6ebb;
+  }
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 160px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+  }
+  .product-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .product-name {
+    font-weight: bold;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  .product-details {
+    display: none; /* Hidden by default */
+    font-size: 14px;
+    color: #555;
+  }
+  .product-details.active {
+    display: block;
+  }
+  button {
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2a6ebb;
+    color: white;
+    cursor: pointer;
+  }
+  button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+</style>
+
+<section id="available-products">
   <h2>Our Products</h2>
   <div class="product-list">
 
     <div class="product-item">
-      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" width="150" height="150" />
+      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
       <div class="product-details">
         <p>Made with nutrient-rich rice extract for glowing skin.</p>
@@ -312,7 +384,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" width="150" height="150" />
+      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
       <div class="product-details">
         <p>Infused with pure rose extract and floral petals.</p>
@@ -321,7 +393,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" width="150" height="150" />
+      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
       <div class="product-details">
         <p>A soothing cleanser made with traditional ubtan herbs.</p>
@@ -330,7 +402,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" width="150" height="150" />
+      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
       <div class="product-details">
         <p>Gentle and moisturizing soap made with pure milk.</p>
@@ -339,7 +411,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" width="150" height="150" />
+      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
       <div class="product-details">
         <p>Refreshing turmeric formula for radiant and clear skin.</p>
@@ -348,124 +420,94 @@
     </div>
 
     <div class="product-item">
-      <img src="Neem-soap.jpeg" alt="Herbal Neem Soap" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Herbal Neem Soap</div>
-      <div class="product-details">
-        <p>Coming Soon…</p>
-        <button disabled>Coming Soon</button>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
-      <div class="product-details">
-        <p>Coming Soon…</p>
-        <button disabled>Coming Soon</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="products">
-  <h2>Our Products</h2>
-  <div class="product-list">
-    <!-- Available Products -->
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
-      <div class="product-details">
-        <img src="Rice.jpg" alt="Golden Rice Glow" />
-        <p>Made with nutrient-rich rice extract for glowing skin.</p>
-        <button>Buy Now</button>
-      </div>a
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
-      <div class="product-details">
-        <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" />
-        <p>Infused with pure rose extract and floral petals.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
-      <div class="product-details">
-        <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" />
-        <p>A soothing cleanser made with traditional ubtan herbs.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
-      <div class="product-details">
-        <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" />
-        <p>Gentle and moisturizing soap made with pure milk.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
-      <div class="product-details">
-        <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" />
-        <p>Refreshing turmeric formula for radiant and clear skin.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
+      <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Neem Herbal Bar</div>
       <div class="product-details">
-        <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" />
         <p>Purifying neem formula for acne-prone skin.</p>
         <button>Buy Now</button>
       </div>
     </div>
 
-    <!-- Coming Soon Products -->
     <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Papaya Skin Polish</div>
+      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
       <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Papaya Skin Polish" />
-        <p>Coming Soon...</p>
+        <p>Moisturizing and softening bar with natural honey goodness.</p>
+        <button>Buy Now</button>
       </div>
     </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Coffee Scrub Soap</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Coffee Scrub Soap" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Charcoal Detox Bar</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Charcoal Detox Bar" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Lavender Calming Cream</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Lavender Calming Cream" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Coconut Nourish Lotion</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Coconut Nourish Lotion" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Mint Refresh Gel</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Mint Refresh Gel" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
+
   </div>
 </section>
+
+<section id="coming-soon-products">
+  <h2>Products To Be Announced</h2>
+  <div class="product-list">
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Papaya Skin Polish" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Papaya Skin Polish</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Coffee Scrub Soap" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Coffee Scrub Soap</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Charcoal Detox Bar" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Charcoal Detox Bar</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Lavender Calming Cream" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Lavender Calming Cream</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Coconut Nourish Lotion" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Coconut Nourish Lotion</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="images/coming-soon.jpg" alt="Mint Refresh Gel" class="product-image" />
+      <div class="product-name" onclick="toggleDetails(this)">Mint Refresh Gel</div>
+      <div class="product-details">
+        <p>Coming Soon...</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  function toggleDetails(element) {
+    const details = element.nextElementSibling;
+    details.classList.toggle('active');
+  }
+</script>
 
 
 
