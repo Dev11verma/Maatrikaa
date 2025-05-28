@@ -1,933 +1,740 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maatrika Organic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>Maatrika Organic | Handmade Eco-Friendly Skincare</title>
+  <meta name="description" content="Maatrika Organic offers 100% organic, handmade, eco-friendly skincare products made with natural ingredients. Herbal soaps, shampoo bars & more." />
+  <meta name="keywords" content="organic skincare, handmade soap, eco-friendly products, herbal soap, natural moisturizer, shampoo bars" />
+  <meta name="author" content="Maatrika Organic" />
+  <meta property="og:title" content="Maatrika Organic - Natural Handmade Skincare" />
+  <meta property="og:description" content="Discover eco-friendly, organic skincare products handcrafted with love." />
+  <meta property="og:image" content="https://example.com/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://maatrikaorganic.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://kit.fontawesome.com/a2e0e6cfd3.js" crossorigin="anonymous"></script>
   <style>
     :root {
-      --bg: #f8fafb;
-      --accent: #2c7be5;
-      --accent-dark: #1a4dbb;
-      --nav-bg: #ffffff;
-      --text: #212529;
-      --muted: #6c757d;
-      --card: #ffffff;
-      --shadow-light: rgba(44, 123, 229, 0.15);
-      --shadow-dark: rgba(0, 0, 0, 0.1);
-      --border-radius: 12px;
-      --border-color: #e3e9f3;
-      --transition: all 0.3s ease-in-out;
-      --max-width: 1100px;
-      --font-family: 'Inter', sans-serif;
+      --bg: #f2f4f8;
+      --text: #333;
+      --accent: #2b7a78;
+      --accent-light: #def2f1;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --highlight: #def2f1;
+      --btn-bg: #2b7a78;
+      --btn-hover: #1f5f5a;
+      --border-radius: 1rem;
+      --transition: 0.3s ease;
     }
 
-    /* Reset & basics */
-    *, *::before, *::after {
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --accent: #4dd0e1;
+      --accent-light: #263238;
+      --card-bg: #1f1f1f;
+      --shadow: rgba(255, 255, 255, 0.05);
+      --highlight: #263238;
+      --btn-bg: #4dd0e1;
+      --btn-hover: #35a4be;
+    }
+
+    * {
       box-sizing: border-box;
-    }
-    body {
-      margin: 0; padding: 0;
-      font-family: var(--font-family);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.25s ease;
-    }
-    a:hover, a:focus {
-      color: var(--accent-dark);
-      outline: none;
-    }
-    h1, h2, h3, h4 {
-      margin: 0 0 1rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--accent-dark);
-      text-transform: uppercase;
-      user-select: none;
-    }
-    p {
-      margin-bottom: 1.5rem;
-      color: var(--muted);
-      max-width: 760px;
-      line-height: 1.5;
-      user-select: text;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
     }
 
-    /* Scroll behavior */
-    html {
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+      line-height: 1.6;
       scroll-behavior: smooth;
     }
 
-    /* --- NAVIGATION --- */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--btn-hover);
+      outline: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 6px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      cursor: pointer;
+    }
 
     nav {
-      position: fixed;
-      top: 0; left: 0;
-      height: 100vh;
-      width: 240px;
-      background: var(--nav-bg);
-      box-shadow: 2px 0 15px var(--shadow-dark);
-      padding: 2.5rem 1.5rem;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem;
-      z-index: 10000;
-      transition: transform 0.35s ease;
+      gap: 1.5rem;
     }
 
-    nav img.logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      box-shadow: 0 8px 20px var(--shadow-light);
-      cursor: pointer;
-      user-select: none;
-    }
-
-    nav ul {
-      list-style: none;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    nav li a {
-      display: block;
-      padding: 0.8rem 1rem;
-      border-radius: var(--border-radius);
+    nav a {
       font-weight: 600;
-      color: var(--text);
-      border: 2px solid transparent;
-      text-align: center;
-      box-shadow: 0 2px 6px var(--shadow-light);
-      transition: var(--transition);
-      user-select: none;
-    }
-    nav li a:hover,
-    nav li a.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-      box-shadow: 0 8px 15px var(--shadow-light);
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: background-color var(--transition);
     }
 
-    /* --- MAIN CONTENT --- */
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--highlight);
+    }
+
+    .toggle-theme {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+      transition: background-color var(--transition);
+    }
+
+    .toggle-theme:hover,
+    .toggle-theme:focus {
+      background-color: var(--highlight);
+      outline: none;
+    }
 
     main {
-      margin-left: 240px;
-      max-width: var(--max-width);
-      padding: 4.5rem 3rem 3rem;
-      transition: margin-left 0.3s ease;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem 4rem;
     }
 
-    /* Sections styling */
-    section {
-      background: var(--card);
-      padding: 3rem 2rem 4rem;
-      margin-bottom: 6rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 15px var(--shadow-dark);
-      border: 1px solid var(--border-color);
-      user-select: none;
+    /* Hero Section */
+    .hero {
       position: relative;
-    }
-
-    /* Welcome section */
-    #welcome h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      user-select: text;
-    }
-    #welcome p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    #welcome button {
-      background: linear-gradient(135deg, #2c7be5, #1a4dbb);
-      border: none;
-      padding: 1.2rem 3rem;
-      color: white;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 25px rgba(44, 123, 229, 0.4);
-      transition: background 0.3s ease;
-      user-select: none;
-      display: inline-block;
-      margin: 0 auto;
-      display: block;
-      width: fit-content;
-    }
-    #welcome button:hover,
-    #welcome button:focus {
-      background: linear-gradient(135deg, #1a4dbb, #0e3080);
-      outline: none;
-    }
-
-    /* --- PRODUCTS --- */
-
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .product-item {
-      background: var(--bg);
-      padding: 1.8rem 1.5rem;
+      background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80")
+        center/cover no-repeat;
       border-radius: var(--border-radius);
-      box-shadow: 0 3px 12px var(--shadow-light);
-      border: 1.5px solid var(--border-color);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-item:hover,
-    .product-item:focus-within {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px var(--shadow-light);
-    }
-    .product-name {
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      user-select: text;
-    }
-    .product-details {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-top: 0.8rem;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.3s ease;
-      overflow: hidden;
-    }
-    .product-details.active {
-      max-height: 200px;
-      opacity: 1;
-    }
-    .product-details p {
-      margin-bottom: 1.25rem;
-      user-select: text;
-    }
-    .product-details button {
-      background: var(--accent);
+      height: 420px;
       color: #fff;
-      padding: 0.7rem 2.5rem;
-      border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    .product-details button:hover,
-    .product-details button:focus {
-      background: var(--accent-dark);
-      outline: none;
-    }
-
-    /* --- BENEFITS --- */
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      user-select: none;
-    }
-    .card {
-      background: var(--bg);
-      padding: 2rem 1.8rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 18px var(--shadow-light);
-      border: 1.5px solid var(--border-color);
-      text-align: center;
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .card:hover {
-      box-shadow: 0 12px 25px var(--shadow-light);
-    }
-    .card h3 {
-      margin-bottom: 1rem;
-      user-select: text;
-    }
-    .card p {
-      font-size: 1rem;
-      color: var(--muted);
-      user-select: text;
-    }
-
-    /* --- TESTIMONIALS --- */
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-      user-select: none;
-    }
-    .testimonial-card {
-      background: var(--bg);
-      padding: 2.8rem 2.2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 8px 22px var(--shadow-light);
-      border: 1.5px solid var(--border-color);
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 16px 30px var(--shadow-light);
-    }
-    .testimonial-card p {
-      font-style: italic;
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-      user-select: text;
-    }
-    .testimonial-card h4 {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.6rem;
-      user-select: text;
-    }
-    .rating {
-      color: gold;
-      font-size: 1.4rem;
-      user-select: none;
-      letter-spacing: 0.05em;
-    }
-
-    /* --- ABOUT --- */
-
-    #about p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      user-select: text;
-    }
-
-    /* --- CONTACT --- */
-
-    .contact-section form {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      max-width: 480px;
-      margin: 0 auto;
+      justify-content: center;
+      padding: 0 2rem;
+      box-shadow: inset 0 0 0 1000px rgba(43, 122, 120, 0.6);
+      margin-bottom: 3rem;
+      text-align: center;
+      transition: box-shadow 0.3s;
     }
-    .contact-section input,
-    .contact-section textarea {
-      padding: 1rem 1.2rem;
-      border-radius: var(--border-radius);
-      border: 1.5px solid var(--border-color);
-      font-size: 1rem;
-      resize: vertical;
-      font-family: var(--font-family);
-      color: var(--text);
-      transition: border-color 0.3s ease;
-    }
-    .contact-section input:focus,
-    .contact-section textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-    .contact-section button {
-      background: var(--accent);
-      color: white;
-      padding: 1rem 2.5rem;
-      border: none;
+
+    .hero h1 {
+      font-size: 2.8rem;
       font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
-      transition: background 0.3s ease;
-      user-select: none;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     }
-    .contact-section button:hover,
-    .contact-section button:focus {
-      background: var(--accent-dark);
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero button {
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(43, 122, 120, 0.6);
+      transition: background-color var(--transition);
+    }
+
+    .hero button:hover,
+    .hero button:focus {
+      background-color: var(--btn-hover);
       outline: none;
     }
 
-    /* --- FOOTER --- */
+    /* Cards */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 2px 12px var(--shadow);
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .card ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .highlight {
+      background-color: var(--highlight);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 12px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 18px var(--shadow);
+      outline: none;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--highlight);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1rem 1.5rem 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+
+    .product-price {
+      font-weight: 600;
+      color: var(--btn-bg);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-btn {
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      align-self: start;
+      box-shadow: 0 3px 10px rgba(43, 122, 120, 0.5);
+      transition: background-color var(--transition);
+    }
+
+    .product-btn:hover,
+    .product-btn:focus {
+      background-color: var(--btn-hover);
+      outline: none;
+    }
+
+    .product-coming-soon {
+      background-color: #f0ad4e;
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 0.5rem;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card-wrapper {
+      position: relative;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--highlight);
+      border-radius: var(--border-radius);
+      padding: 2rem 2rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+
+    .testimonials h2 {
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .testimonial-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .testimonial {
+      background-color: var(--card-bg);
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 1px 6px var(--shadow);
+      max-width: 320px;
+      flex: 1 1 300px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .testimonial.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .testimonial .author {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--accent);
+      text-align: right;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 2px 12px var(--shadow);
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .newsletter.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .newsletter h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .newsletter p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter input[type="email"] {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 9999px 0 0 9999px;
+      border: 1px solid var(--accent);
+      outline: none;
+      width: 280px;
+      max-width: 100%;
+      transition: border-color var(--transition);
+    }
+
+    .newsletter input[type="email"]:focus {
+      border-color: var(--btn-hover);
+    }
+
+    .newsletter button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 0 9999px 9999px 0;
+      border: none;
+      background-color: var(--btn-bg);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .newsletter button:hover,
+    .newsletter button:focus {
+      background-color: var(--btn-hover);
+      outline: none;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem 1rem;
+      color: var(--text);
+      background-color: var(--card-bg);
+      box-shadow: 0 -2px 6px var(--shadow);
       font-size: 0.9rem;
-      color: var(--muted);
       user-select: none;
     }
 
-    /* --- MOBILE NAVIGATION --- */
+    /* Floating Order Now Button - Mobile */
+    .order-now-btn {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--btn-bg);
+      color: white;
+      border-radius: 9999px;
+      padding: 1rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(43, 122, 120, 0.7);
+      cursor: pointer;
+      z-index: 10001;
+      transition: background-color var(--transition);
+      border: none;
+    }
 
-    @media (max-width: 900px) {
-      nav {
-        position: fixed;
-        width: 100%;
-        height: 60px;
-        bottom: auto;
-        top: 0;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 1rem;
-        box-shadow: 0 2px 8px var(--shadow-dark);
-        z-index: 20000;
-        transform: translateY(0);
-      }
-      nav img.logo {
-        width: 48px;
-        height: 48px;
-        margin: auto 0;
-      }
-      nav ul {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 60px);
-        background: var(--nav-bg);
+    .order-now-btn:hover,
+    .order-now-btn:focus {
+      background-color: var(--btn-hover);
+      outline: none;
+    }
+
+    /* Media Queries */
+    @media (max-width: 960px) {
+      .testimonial-list {
         flex-direction: column;
-        padding-top: 2rem;
-        gap: 2rem;
-        box-shadow: 0 8px 25px var(--shadow-dark);
-        transform: translateY(-110%);
-        transition: transform 0.4s ease;
-        z-index: 19000;
+        align-items: center;
       }
-      nav ul.open {
-        transform: translateY(0);
-      }
-      nav li a {
-        font-size: 1.2rem;
-        padding: 1rem;
-        text-align: center;
-        box-shadow: none;
-        border: none;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
       }
 
-      main {
-        margin-left: 0;
-        padding: 5.5rem 1.5rem 2rem;
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
       }
 
-      /* Hamburger menu button */
-      #menu-toggle {
+      .hero {
+        height: 320px;
+        padding: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .order-now-btn {
         display: block;
-        cursor: pointer;
-        margin: auto 0;
-        width: 28px;
-        height: 22px;
-        position: relative;
-        user-select: none;
       }
-      #menu-toggle span,
-      #menu-toggle span::before,
-      #menu-toggle span::after {
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        background: var(--accent);
-        border-radius: 3px;
-        transition: all 0.3s ease;
-      }
-      #menu-toggle span {
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      #menu-toggle span::before {
-        content: '';
-        top: -8px;
-      }
-      #menu-toggle span::after {
-        content: '';
-        bottom: -8px;
-      }
-      #menu-toggle.open span {
-        background: transparent;
-      }
-      #menu-toggle.open span::before {
-        transform: rotate(45deg);
-        top: 0;
-      }
-      #menu-toggle.open span::after {
-        transform: rotate(-45deg);
-        bottom: 0;
-      }
+    }
 
-      /* Product details toggle for mobile */
-      .product-details {
-        max-height: none !important;
-        opacity: 1 !important;
-        display: none;
-      }
-      .product-details.active {
-        display: block !important;
-      }
-      .product-item:hover,
-      .product-item:focus-within {
-        transform: none;
-        box-shadow: none;
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
       }
     }
   </style>
 </head>
+
 <body>
-  <nav role="navigation" aria-label="Primary Navigation">
-    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Maatrika Organic Logo" class="logo" tabindex="0" />
-    <div id="menu-toggle" aria-label="Toggle menu" role="button" aria-expanded="false" tabindex="0">
-      <span></span>
+  <header>
+    <div class="logo" tabindex="0" role="link" aria-label="Maatrika Organic homepage" onclick="location.href='#hero'">
+      Maatrika Organic
     </div>
-    <ul id="nav-links">
-      <li><a href="#welcome" class="active">Welcome</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#hero" tabindex="0">Home</a>
+      <a href="#products" tabindex="0">Products</a>
+      <a href="#testimonials" tabindex="0">Testimonials</a>
+      <a href="#newsletter" tabindex="0">Newsletter</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
+    <button class="toggle-theme" id="toggleTheme" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </header>
 
-<main>
-    <section id="welcome">
-      <h1>Welcome to Maatrika Organic</h1>
-      <p>Discover the goodness of nature through handmade, chemical-free skincare designed for all skin types. Your skin deserves purity.</p>
-      <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Explore Products</button>
-    </section>
-   <section id="products">
-  <h2>Our Products</h2>
-  <div class="product-list">
+  <main>
+  <section class="hero" id="hero" role="banner" aria-label="Hero banner">
+    <h1>Pure <span class="highlight">Organic Skincare</span> For Your Natural Beauty</h1>
+    <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
+    <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
+  </section>
 
-    <div class="product-item">
-      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
-      <div class="product-details">
-        <p>Made with nutrient-rich rice extract for glowing skin.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
+  <section class="card" id="products" tabindex="0" aria-label="Our Products">
+    <h2>Our Products</h2>
+    <div class="products-grid">
 
-    <div class="product-item">
-      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
-      <div class="product-details">
-        <p>Infused with pure rose extract and floral petals.</p>
-        <button>Buy Now</button>
+      <div class="product-card-wrapper" aria-label="Herbal Soaps product">
+        <article class="product-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80" alt="Herbal Soaps" />
+          <div class="product-info">
+            <h3 class="product-title">Herbal Soaps</h3>
+            <p class="product-desc">Gentle, aromatic herbal soaps made with traditional recipes and natural ingredients.</p>
+            <span class="product-price">₹350 / bar</span>
+            <button class="product-btn" aria-label="Order Herbal Soaps">Order Now</button>
+          </div>
+        </article>
       </div>
-    </div>
 
-    <div class="product-item">
-      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
-      <div class="product-details">
-        <p>A soothing cleanser made with traditional ubtan herbs.</p>
-        <button>Buy Now</button>
+      <div class="product-card-wrapper" aria-label="Shampoo Bars product">
+        <article class="product-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80" alt="Shampoo Bars" />
+          <div class="product-info">
+            <h3 class="product-title">Shampoo Bars</h3>
+            <p class="product-desc">Zero-waste, nourishing shampoo bars perfect for all hair types.</p>
+            <span class="product-price">₹450 / bar</span>
+            <button class="product-btn" aria-label="Order Shampoo Bars">Order Now</button>
+          </div>
+        </article>
       </div>
-    </div>
 
-    <div class="product-item">
-      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
-      <div class="product-details">
-        <p>Gentle and moisturizing soap made with pure milk.</p>
-        <button>Buy Now</button>
+      <div class="product-card-wrapper" aria-label="Natural Moisturizers product">
+        <article class="product-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80" alt="Natural Moisturizers" />
+          <div class="product-info">
+            <h3 class="product-title">Natural Moisturizers</h3>
+            <p class="product-desc">Lightweight, hydrating moisturizers crafted with organic oils and herbs.</p>
+            <span class="product-price">₹650 / jar</span>
+            <button class="product-btn" aria-label="Order Natural Moisturizers">Order Now</button>
+          </div>
+        </article>
       </div>
-    </div>
 
-    <div class="product-item">
-      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
-      <div class="product-details">
-        <p>Refreshing turmeric formula for radiant and clear skin.</p>
-        <button>Buy Now</button>
+      <div class="product-card-wrapper" aria-label="Coming Soon product">
+        <article class="product-card" tabindex="0" aria-disabled="true">
+          <span class="product-coming-soon">Coming Soon</span>
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Exfoliating Scrubs" />
+          <div class="product-info">
+            <h3 class="product-title">Exfoliating Scrubs</h3>
+            <p class="product-desc">Gentle exfoliating scrubs made from natural grains and oils.</p>
+            <span class="product-price">₹400 / jar</span>
+            <button class="product-btn" disabled aria-label="Exfoliating Scrubs Coming Soon">Coming Soon</button>
+          </div>
+        </article>
       </div>
-    </div>
 
-    <div class="product-item">
-      <img src="Neem-soap.jpeg" alt="Herbal Neem Soap" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Herbal Neem Soap</div>
-      <div class="product-details">
-        <p>Coming Soon…</p>
-        <button disabled>Coming Soon</button>
-      </div>
     </div>
+  </section>
+</main>
 
-    <div class="product-item">
-      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" width="150" height="150" />
-      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
-      <div class="product-details">
-        <p>Coming Soon…</p>
-        <button disabled>Coming Soon</button>
-      </div>
-    </div>
 
-  </div>
-</section>
-
-<section id="products">
-  <h2>Our Products</h2>
-  <div class="product-list">
-    <!-- Available Products -->
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
-      <div class="product-details">
-        <img src="Rice.jpg" alt="Golden Rice Glow" />
-        <p>Made with nutrient-rich rice extract for glowing skin.</p>
-        <button>Buy Now</button>
-      </div>a
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
-      <div class="product-details">
-        <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" />
-        <p>Infused with pure rose extract and floral petals.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
-      <div class="product-details">
-        <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" />
-        <p>A soothing cleanser made with traditional ubtan herbs.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
-      <div class="product-details">
-        <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" />
-        <p>Gentle and moisturizing soap made with pure milk.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
-      <div class="product-details">
-        <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" />
-        <p>Refreshing turmeric formula for radiant and clear skin.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Neem Herbal Bar</div>
-      <div class="product-details">
-        <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" />
-        <p>Purifying neem formula for acne-prone skin.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-
-    <!-- Coming Soon Products -->
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Papaya Skin Polish</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Papaya Skin Polish" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Coffee Scrub Soap</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Coffee Scrub Soap" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Charcoal Detox Bar</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Charcoal Detox Bar" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Lavender Calming Cream</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Lavender Calming Cream" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Coconut Nourish Lotion</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Coconut Nourish Lotion" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-    <div class="product-item">
-      <div class="product-name" onclick="toggleDetails(this)">Mint Refresh Gel</div>
-      <div class="product-details">
-        <img src="image/coming-soon.jpg" alt="Mint Refresh Gel" />
-        <p>Coming Soon...</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section id="benefits" tabindex="0" aria-label="Benefits of Our Soaps">
-      <h2>Benefits of Our Soaps</h2>
-      <div class="grid-2">
-        <div class="card" tabindex="0">
-          <h3>100% Natural Ingredients</h3>
-          <p>We use only pure organic oils, herbs, and essential oils.</p>
-        </div>
-        <div class="card" tabindex="0">
-          <h3>Eco-Friendly Packaging</h3>
-          <p>Our packaging is biodegradable and plastic-free.</p>
-        </div>
-        <div class="card" tabindex="0">
-          <h3>Cruelty-Free</h3>
-          <p>No animal testing. Only kindness and care.</p>
-        </div>
-        <div class="card" tabindex="0">
-          <h3>Handmade With Love</h3>
-          <p>Each bar is carefully crafted by skilled artisans.</p>
-        </div>
-      </div>
-     <section id="testimonials" class="testimonials-section">
+<section class="testimonials" id="testimonials" tabindex="0" aria-label="Customer Testimonials">
   <h2>What Our Customers Say</h2>
-  <div class="testimonial-grid">
-
-    <div class="testimonial-card">
-      <p>"The honey facewash changed my skin — so soft and glowing!"</p>
-      <h4>- Neha Patel</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"Love the natural scents and the gentle floral cleanser."</p>
-      <h4>- Rahul Singh</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"Eco-friendly packaging and amazing results. Highly recommend."</p>
-      <h4>- Priya Sharma</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"I’ve struggled with dryness for years — the aloe vera cleanser was a game changer."</p>
-      <h4>- Sakshi Mehra</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"Floral Cleanser smells divine and leaves my face feeling refreshed every time."</p>
-      <h4>- Ananya Jain</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"So gentle yet effective! My acne has reduced and my skin feels nourished."</p>
-      <h4>- Ishaan Malhotra</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"The lemon facewash keeps my oily skin in check — and it smells so fresh!"</p>
-      <h4>- Ritika Chauhan</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"I love that it’s all natural. My sensitive skin finally found its match."</p>
-      <h4>- Deepika Rao</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"Clean ingredients, zero irritation, and a noticeable glow — obsessed!"</p>
-      <h4>- Mohit Desai</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"It’s like a mini facial every morning. My skin looks healthier than ever."</p>
-      <h4>- Kriti Sharma</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"The products feel luxurious yet simple — I’ve completely switched to Maatrika."</p>
-      <h4>- Dev Verma</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"I always wanted something natural for my daily routine. Maatrika delivered beautifully."</p>
-      <h4>- Avani Soni</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"It’s hard to find products that work and are clean. Maatrika got both right."</p>
-      <h4>- Aarushi Sen</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"Ever since I tried the honey facewash, I haven’t gone back to store brands."</p>
-      <h4>- Adhrisha Soni</h4>
-      <div class="rating">★★★★★</div>
-    </div>
-    </section>
-
-    <section id="about" tabindex="0" aria-label="About Maatrika Organic">
-      <h2>About Us</h2>
-      <p>
-        Maatrika Organic is dedicated to crafting the finest natural soaps, blending ancient Indian traditions with modern care. Our commitment is to your skin and the planet.
-      </p>
-    </section>
-
-    <section id="contact" class="contact-section" tabindex="0" aria-label="Contact Us">
-  <h2>Contact Us</h2>
-
-  <div class="contact-details" style="margin-bottom: 20px;">
-    <p>📞 <a href="tel:+919202142350">+91 92021 42350</a></p>
-    <p>✉️ <a href="mailto:we.maatrikaorganic@gmail.com">we.maatrikaorganic@gmail.com</a></p>
-  </div>
-
-  <div class="social-links">
-    <a href="https://instagram.com/maatrikaorganic" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://facebook.com/maatrikaorganic" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="https://wa.me/919202142350?text=Hi" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  <div class="testimonial-list">
+    <article class="testimonial" tabindex="0" aria-live="polite">
+      <p>"Absolutely love the herbal soaps! They leave my skin soft and refreshed."</p>
+      <div class="author">— Anjali S.</div>
+    </article>
+    <article class="testimonial" tabindex="0" aria-live="polite">
+      <p>"The shampoo bars are amazing and eco-friendly. My hair feels healthier than ever."</p>
+      <div class="author">— Rahul K.</div>
+    </article>
+    <article class="testimonial" tabindex="0" aria-live="polite">
+      <p>"Natural moisturizers that really work! Perfect for my sensitive skin."</p>
+      <div class="author">— Meera P.</div>
+    </article>
   </div>
 </section>
+
+<section class="newsletter" id="newsletter" tabindex="0" aria-label="Newsletter Subscription">
+  <h2>Stay Updated</h2>
+  <p>Subscribe to get exclusive offers, product updates, and skincare tips directly to your inbox.</p>
+  <form action="#" method="post" aria-label="Subscribe to newsletter">
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Your email address"
+      required
+      aria-required="true"
+      aria-label="Email address"
+    />
+    <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+  </form>
+</section>
+
+<section id="contact" tabindex="0" aria-label="Contact Information" class="card">
+  <h2>Contact Us</h2>
+  <p>Questions or custom orders? Reach out to us!</p>
+  <ul>
+    <li>Email: <a href="mailto:info@maatrikaorganic.com" tabindex="0">info@maatrikaorganic.com</a></li>
+    <li>Phone: <a href="tel:+919876543210" tabindex="0">+91 98765 43210</a></li>
+    <li>Address: 123 Organic Lane, Green City, India</li>
+  </ul>
+</section>
+```
 
   </main>
 
-   <!-- ... your existing content ... -->
+  <button class="order-now-btn" aria-label="Order Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">
+    Order Now
+  </button>
 
-  <footer style="text-align: center; padding: 20px; font-family: 'Arial', sans-serif; color: #555;">
-    &copy; 2025 Maatrika Organic. All rights reserved.<br>
-    Made with <span style="color: #e25555;">&#10084;&#65039;</span> by Team Maatrika
+  <footer>
+    &copy; 2025 Maatrika Organic. All rights reserved.
   </footer>
 
-
   <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+    // Theme toggle with persistence
+    const toggleBtn = document.getElementById("toggleTheme");
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-    menuToggle.addEventListener('click', () => {
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-      menuToggle.setAttribute('aria-expanded', !expanded);
-      navLinks.classList.toggle('open');
-      menuToggle.classList.toggle('open');
-    });
-
-    // Keyboard accessible toggle for mobile
-    menuToggle.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
+    function setTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        toggleBtn.setAttribute("aria-pressed", "true");
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        toggleBtn.setAttribute("aria-pressed", "false");
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
       }
+      localStorage.setItem("theme", theme);
+    }
+
+    // Initialize theme
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (prefersDarkScheme.matches) {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
+    })();
+
+    toggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(currentTheme === "dark" ? "light" : "dark");
     });
 
-    // Product details toggle for desktop/mobile
-    const products = document.querySelectorAll('.product-item');
+    // Scroll animations for cards and testimonials
+    function revealOnScroll() {
+      const revealElements = document.querySelectorAll(".card, .testimonial, .newsletter");
+      const windowHeight = window.innerHeight;
+      const revealPoint = 150;
 
-    products.forEach(product => {
-      product.addEventListener('click', () => {
-        const details = product.querySelector('.product-details');
-        const expanded = product.getAttribute('aria-expanded') === 'true' || false;
-
-        // Close all others
-        products.forEach(p => {
-          if (p !== product) {
-            p.setAttribute('aria-expanded', false);
-            p.querySelector('.product-details').classList.remove('active');
-            p.querySelector('.product-details').setAttribute('aria-hidden', 'true');
-          }
-        });
-
-        // Toggle current
-        if (!expanded) {
-          details.classList.add('active');
-          details.setAttribute('aria-hidden', 'false');
-          product.setAttribute('aria-expanded', 'true');
-        } else {
-          details.classList.remove('active');
-          details.setAttribute('aria-hidden', 'true');
-          product.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // Keyboard toggle support
-      product.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          product.click();
-        }
-      });
-    });
-
-    // Scrollspy for nav links active state
-    const sections = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('nav ul li a');
-
-    function onScroll() {
-      let scrollPos = window.scrollY + window.innerHeight / 3;
-      sections.forEach(section => {
-        if (
-          scrollPos >= section.offsetTop &&
-          scrollPos < section.offsetTop + section.offsetHeight
-        ) {
-          navAnchors.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href').substring(1) === section.id) {
-              a.classList.add('active');
-            }
-          });
+      revealElements.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - revealPoint) {
+          el.classList.add("visible");
         }
       });
     }
 
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
 
-    // Close mobile menu on nav link click
-    navAnchors.forEach(link => {
-      link.addEventListener('click', () => {
-        if (navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
-          menuToggle.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', false);
-        }
-      });
+    // Newsletter form submission (demo)
+    const newsletterForm = document.querySelector(".newsletter form");
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const emailInput = newsletterForm.querySelector('input[type="email"]');
+      if (emailInput.value.trim()) {
+        alert(`Thank you for subscribing, ${emailInput.value.trim()}!`);
+        newsletterForm.reset();
+      }
     });
   </script>
 
-
 </body>
+
 </html>
+```
