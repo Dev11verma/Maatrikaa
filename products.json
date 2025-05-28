@@ -1,0 +1,92 @@
+[
+  {
+    "id": "neem-soap",
+    "name": "Neem Soap",
+    "description": "Purifying neem soap that gently cleanses and protects the skin.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/Neem-soap.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "turmeric-soap",
+    "name": "Turmeric Soap",
+    "description": "Brightening soap with the healing power of turmeric and essential oils.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/Turmeric-soap.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "milk-soap",
+    "name": "Milk Soap",
+    "description": "Nourishing milk soap for soft, hydrated, and glowing skin.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/Milk-Soap.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "ubtan-soap",
+    "name": "Ubtan Soap",
+    "description": "Traditional ubtan soap for detoxifying and refreshing your skin.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/Ubtan-soap.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "honey-soap",
+    "name": "Honey Soap",
+    "description": "Moisturizing honey-infused soap for natural glow and softness.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/honey-soap.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "rose-cream",
+    "name": "Rose Cream",
+    "description": "Luxurious rose-scented cream for smooth and supple skin.",
+    "oldPrice": 100,
+    "price": 49,
+    "image": "images/Rose-Cream.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "lavender-body-oil",
+    "name": "Lavender Body Oil",
+    "description": "Relaxing body oil infused with soothing lavender for soft, supple skin.",
+    "oldPrice": 350,
+    "price": 299,
+    "image": "images/lavender-body-oil.jpeg",
+    "inStock": false
+  },
+  {
+    "id": "aloe-vera-gel",
+    "name": "Aloe Vera Gel",
+    "description": "Pure aloe vera gel for soothing and hydrating sun-kissed or irritated skin.",
+    "oldPrice": 200,
+    "price": 149,
+    "image": "images/aloe-vera-gel.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "charcoal-face-mask",
+    "name": "Charcoal Face Mask",
+    "description": "Detoxifying charcoal mask for clear and radiant skin.",
+    "oldPrice": 250,
+    "price": 199,
+    "image": "images/charcoal-face-mask.jpeg",
+    "inStock": true
+  },
+  {
+    "id": "sandalwood-cream",
+    "name": "Sandalwood Cream",
+    "description": "Rich sandalwood cream for a traditional, nourishing skincare experience.",
+    "oldPrice": 300,
+    "price": 249,
+    "image": "images/sandalwood-cream.jpeg",
+    "inStock": false
+  }
+]
