@@ -556,61 +556,97 @@
     <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
   </section>
 
-  <section class="card" id="products" tabindex="0" aria-label="Our Products">
-    <h2>Our Products</h2>
-    <div class="products-grid">
+<main>
+    <section class="hero" id="hero" role="banner" aria-label="Hero banner">
+      <h2>Pure <span class="highlight">Organic Skincare</span> For Your Natural Beauty</h2>
+      <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
+      <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
+    </section>
 
-      <div class="product-card-wrapper" aria-label="Herbal Soaps product">
-        <article class="product-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80" alt="Herbal Soaps" />
-          <div class="product-info">
-            <h3 class="product-title">Herbal Soaps</h3>
-            <p class="product-desc">Gentle, aromatic herbal soaps made with traditional recipes and natural ingredients.</p>
-            <span class="product-price">₹350 / bar</span>
-            <button class="product-btn" aria-label="Order Herbal Soaps">Order Now</button>
-          </div>
-        </article>
+    <section class="card" id="products" tabindex="0" aria-label="Our Products">
+      <h2>Our Products</h2>
+      <div class="products-grid">
+
+        <!-- Neem Soap -->
+        <div class="product-card-wrapper" aria-label="Neem Soap">
+          <article class="product-card" tabindex="0">
+            <img src="Neem-soap.jpeg" alt="Neem Soap" />
+            <div class="product-info">
+              <h3 class="product-title">Neem Soap</h3>
+              <p class="product-desc">Purifying neem soap that gently cleanses and protects the skin.</p>
+              <span class="product-price">₹350 / bar</span>
+              <button class="product-btn" aria-label="Order Neem Soap">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Turmeric Soap -->
+        <div class="product-card-wrapper" aria-label="Turmeric Soap">
+          <article class="product-card" tabindex="0">
+            <img src="Turmeric-soap.jpeg" alt="Turmeric Soap" />
+            <div class="product-info">
+              <h3 class="product-title">Turmeric Soap</h3>
+              <p class="product-desc">Brightening soap with the healing power of turmeric and essential oils.</p>
+              <span class="product-price">₹350 / bar</span>
+              <button class="product-btn" aria-label="Order Turmeric Soap">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Milk Soap -->
+        <div class="product-card-wrapper" aria-label="Milk Soap">
+          <article class="product-card" tabindex="0">
+            <img src="Milk-Soap.jpeg" alt="Milk Soap" />
+            <div class="product-info">
+              <h3 class="product-title">Milk Soap</h3>
+              <p class="product-desc">Nourishing milk soap for soft, hydrated, and glowing skin.</p>
+              <span class="product-price">₹400 / bar</span>
+              <button class="product-btn" aria-label="Order Milk Soap">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Ubtan Soap -->
+        <div class="product-card-wrapper" aria-label="Ubtan Soap">
+          <article class="product-card" tabindex="0">
+            <img src="Ubtan-soap.jpeg" alt="Ubtan Soap" />
+            <div class="product-info">
+              <h3 class="product-title">Ubtan Soap</h3>
+              <p class="product-desc">Traditional ubtan soap for detoxifying and refreshing your skin.</p>
+              <span class="product-price">₹380 / bar</span>
+              <button class="product-btn" aria-label="Order Ubtan Soap">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Honey Soap -->
+        <div class="product-card-wrapper" aria-label="Honey Soap">
+          <article class="product-card" tabindex="0">
+            <img src="honey-soap.jpeg" alt="Honey Soap" />
+            <div class="product-info">
+              <h3 class="product-title">Honey Soap</h3>
+              <p class="product-desc">Moisturizing honey-infused soap for natural glow and softness.</p>
+              <span class="product-price">₹360 / bar</span>
+              <button class="product-btn" aria-label="Order Honey Soap">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Rose Cream -->
+        <div class="product-card-wrapper" aria-label="Rose Cream">
+          <article class="product-card" tabindex="0">
+            <img src="Rose-Cream.jpeg" alt="Rose Cream" />
+            <div class="product-info">
+              <h3 class="product-title">Rose Cream</h3>
+              <p class="product-desc">Luxurious rose-scented cream for smooth and supple skin.</p>
+              <span class="product-price">₹500 / jar</span>
+              <button class="product-btn" aria-label="Order Rose Cream">Order Now</button>
+            </div>
+          </article>
+        </div>
+
       </div>
-
-      <div class="product-card-wrapper" aria-label="Shampoo Bars product">
-        <article class="product-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80" alt="Shampoo Bars" />
-          <div class="product-info">
-            <h3 class="product-title">Shampoo Bars</h3>
-            <p class="product-desc">Zero-waste, nourishing shampoo bars perfect for all hair types.</p>
-            <span class="product-price">₹450 / bar</span>
-            <button class="product-btn" aria-label="Order Shampoo Bars">Order Now</button>
-          </div>
-        </article>
-      </div>
-
-      <div class="product-card-wrapper" aria-label="Natural Moisturizers product">
-        <article class="product-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80" alt="Natural Moisturizers" />
-          <div class="product-info">
-            <h3 class="product-title">Natural Moisturizers</h3>
-            <p class="product-desc">Lightweight, hydrating moisturizers crafted with organic oils and herbs.</p>
-            <span class="product-price">₹650 / jar</span>
-            <button class="product-btn" aria-label="Order Natural Moisturizers">Order Now</button>
-          </div>
-        </article>
-      </div>
-
-      <div class="product-card-wrapper" aria-label="Coming Soon product">
-        <article class="product-card" tabindex="0" aria-disabled="true">
-          <span class="product-coming-soon">Coming Soon</span>
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Exfoliating Scrubs" />
-          <div class="product-info">
-            <h3 class="product-title">Exfoliating Scrubs</h3>
-            <p class="product-desc">Gentle exfoliating scrubs made from natural grains and oils.</p>
-            <span class="product-price">₹400 / jar</span>
-            <button class="product-btn" disabled aria-label="Exfoliating Scrubs Coming Soon">Coming Soon</button>
-          </div>
-        </article>
-      </div>
-
-    </div>
-  </section>
+    </section>
 </main>
 
 
