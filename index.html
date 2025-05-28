@@ -4,294 +4,513 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maatrika Organic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f8f9fa;
-      --accent: #007bff;
+      --bg: #f8fafb;
+      --accent: #2c7be5;
+      --accent-dark: #1a4dbb;
       --nav-bg: #ffffff;
-      --text: #343a40;
+      --text: #212529;
       --muted: #6c757d;
       --card: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.1);
-      --border-radius: 10px;
-      --border-color: #dee2e6;
+      --shadow-light: rgba(44, 123, 229, 0.15);
+      --shadow-dark: rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --border-color: #e3e9f3;
       --transition: all 0.3s ease-in-out;
+      --max-width: 1100px;
+      --font-family: 'Inter', sans-serif;
     }
 
-    * {
+    /* Reset & basics */
+    *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
-
     body {
-      font-family: 'Inter', sans-serif;
+      margin: 0; padding: 0;
+      font-family: var(--font-family);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    a:hover, a:focus {
+      color: var(--accent-dark);
+      outline: none;
+    }
+    h1, h2, h3, h4 {
+      margin: 0 0 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      user-select: none;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    /* Scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* --- NAVIGATION --- */
 
     nav {
-      width: 220px;
-      height: 100vh;
-      background: var(--nav-bg);
       position: fixed;
-      box-shadow: 2px 0 10px var(--shadow);
-      padding: 40px 20px;
+      top: 0; left: 0;
+      height: 100vh;
+      width: 240px;
+      background: var(--nav-bg);
+      box-shadow: 2px 0 15px var(--shadow-dark);
+      padding: 2.5rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 1000;
+      gap: 3rem;
+      z-index: 10000;
+      transition: transform 0.35s ease;
     }
 
-    nav img {
-      width: 100px;
-      height: 100px;
+    nav img.logo {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 30px;
-      box-shadow: 0 0 12px var(--shadow);
+      box-shadow: 0 8px 20px var(--shadow-light);
+      cursor: pointer;
+      user-select: none;
     }
 
     nav ul {
       list-style: none;
+      width: 100%;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      text-align: center;
+      gap: 1.25rem;
     }
-
     nav li a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      padding: 10px;
       display: block;
+      padding: 0.8rem 1rem;
       border-radius: var(--border-radius);
-      border: 1px solid transparent;
+      font-weight: 600;
+      color: var(--text);
+      border: 2px solid transparent;
+      text-align: center;
+      box-shadow: 0 2px 6px var(--shadow-light);
       transition: var(--transition);
+      user-select: none;
     }
-
     nav li a:hover,
     nav li a.active {
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
-      box-shadow: 0 2px 5px rgba(0, 102, 204, 0.3);
+      box-shadow: 0 8px 15px var(--shadow-light);
     }
+
+    /* --- MAIN CONTENT --- */
 
     main {
       margin-left: 240px;
-      padding: 60px 40px;
+      max-width: var(--max-width);
+      padding: 4.5rem 3rem 3rem;
+      transition: margin-left 0.3s ease;
     }
 
+    /* Sections styling */
     section {
       background: var(--card);
-      padding: 40px;
-      margin-bottom: 80px;
+      padding: 3rem 2rem 4rem;
+      margin-bottom: 6rem;
       border-radius: var(--border-radius);
-      box-shadow: 0 2px 10px var(--shadow);
+      box-shadow: 0 5px 15px var(--shadow-dark);
       border: 1px solid var(--border-color);
+      user-select: none;
+      position: relative;
     }
 
-    h1, h2 {
-      text-align: center;
-      color: var(--accent);
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    /* Welcome section */
+    #welcome h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      user-select: text;
     }
-
-    p {
-      text-align: center;
-      color: var(--muted);
-      max-width: 800px;
-      margin: 0 auto 30px;
+    #welcome p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      user-select: text;
     }
-
-    button {
-      display: block;
-      margin: 30px auto;
-      padding: 14px 40px;
-      background: var(--accent);
+    #welcome button {
+      background: linear-gradient(135deg, #2c7be5, #1a4dbb);
+      border: none;
+      padding: 1.2rem 3rem;
       color: white;
       font-weight: 700;
-      border: none;
-      border-radius: 30px;
+      border-radius: 40px;
       cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: background 0.3s;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 25px rgba(44, 123, 229, 0.4);
+      transition: background 0.3s ease;
+      user-select: none;
+      display: inline-block;
+      margin: 0 auto;
+      display: block;
+      width: fit-content;
+    }
+    #welcome button:hover,
+    #welcome button:focus {
+      background: linear-gradient(135deg, #1a4dbb, #0e3080);
+      outline: none;
     }
 
-    button:hover {
-      background: #0056b3;
-    }
+    /* --- PRODUCTS --- */
 
     .product-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .product-item {
-      background: var(--card);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 10px var(--shadow);
-      border: 1px solid var(--border-color);
-      text-align: center;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .product-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-name {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    .product-details {
-      display: none;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
       max-width: 900px;
       margin: 0 auto;
     }
-
-    .card {
-      background: var(--card);
-      padding: 20px;
+    .product-item {
+      background: var(--bg);
+      padding: 1.8rem 1.5rem;
       border-radius: var(--border-radius);
-      box-shadow: 0 2px 10px var(--shadow);
-      border: 1px solid var(--border-color);
-      text-align: center;
+      box-shadow: 0 3px 12px var(--shadow-light);
+      border: 1.5px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-item:hover,
+    .product-item:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px var(--shadow-light);
+    }
+    .product-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      user-select: text;
+    }
+    .product-details {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      overflow: hidden;
+    }
+    .product-details.active {
+      max-height: 200px;
+      opacity: 1;
+    }
+    .product-details p {
+      margin-bottom: 1.25rem;
+      user-select: text;
+    }
+    .product-details button {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.7rem 2.5rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .product-details button:hover,
+    .product-details button:focus {
+      background: var(--accent-dark);
+      outline: none;
     }
 
-    .card h3 {
-      color: var(--accent);
-      margin-bottom: 15px;
+    /* --- BENEFITS --- */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      user-select: none;
     }
+    .card {
+      background: var(--bg);
+      padding: 2rem 1.8rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 18px var(--shadow-light);
+      border: 1.5px solid var(--border-color);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .card:hover {
+      box-shadow: 0 12px 25px var(--shadow-light);
+    }
+    .card h3 {
+      margin-bottom: 1rem;
+      user-select: text;
+    }
+    .card p {
+      font-size: 1rem;
+      color: var(--muted);
+      user-select: text;
+    }
+
+    /* --- TESTIMONIALS --- */
 
     .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
       margin: 0 auto;
+      user-select: none;
     }
-
     .testimonial-card {
-      background: var(--card);
-      padding: 30px;
+      background: var(--bg);
+      padding: 2.8rem 2.2rem;
       border-radius: var(--border-radius);
-      box-shadow: 0 2px 8px var(--shadow);
-      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 22px var(--shadow-light);
+      border: 1.5px solid var(--border-color);
       text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
     }
-
+    .testimonial-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 16px 30px var(--shadow-light);
+    }
     .testimonial-card p {
       font-style: italic;
       color: var(--muted);
-      margin-bottom: 10px;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      user-select: text;
     }
-
     .testimonial-card h4 {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--text);
+      margin-bottom: 0.6rem;
+      user-select: text;
+    }
+    .rating {
+      color: gold;
+      font-size: 1.4rem;
+      user-select: none;
+      letter-spacing: 0.05em;
     }
 
-    .testimonial-card .rating {
-      color: gold;
-      font-size: 1.2rem;
-      margin-top: 5px;
+    /* --- ABOUT --- */
+
+    #about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      user-select: text;
     }
+
+    /* --- CONTACT --- */
 
     .contact-section form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: auto;
+      gap: 1.25rem;
+      max-width: 480px;
+      margin: 0 auto;
     }
-
     .contact-section input,
     .contact-section textarea {
-      padding: 12px;
+      padding: 1rem 1.2rem;
       border-radius: var(--border-radius);
-      border: 1px solid var(--border-color);
+      border: 1.5px solid var(--border-color);
+      font-size: 1rem;
+      resize: vertical;
+      font-family: var(--font-family);
+      color: var(--text);
+      transition: border-color 0.3s ease;
+    }
+    .contact-section input:focus,
+    .contact-section textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+    .contact-section button {
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .contact-section button:hover,
+    .contact-section button:focus {
+      background: var(--accent-dark);
+      outline: none;
     }
 
-    .social-links {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      margin: 0 10px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-
+    /* --- FOOTER --- */
     footer {
       text-align: center;
-      background: var(--nav-bg);
-      padding: 20px;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      border-top: 1px solid var(--border-color);
+      user-select: none;
     }
 
-    @media (max-width: 768px) {
+    /* --- MOBILE NAVIGATION --- */
+
+    @media (max-width: 900px) {
       nav {
-        display: none;
+        position: fixed;
+        width: 100%;
+        height: 60px;
+        bottom: auto;
+        top: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 1rem;
+        box-shadow: 0 2px 8px var(--shadow-dark);
+        z-index: 20000;
+        transform: translateY(0);
+      }
+      nav img.logo {
+        width: 48px;
+        height: 48px;
+        margin: auto 0;
+      }
+      nav ul {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding-top: 2rem;
+        gap: 2rem;
+        box-shadow: 0 8px 25px var(--shadow-dark);
+        transform: translateY(-110%);
+        transition: transform 0.4s ease;
+        z-index: 19000;
+      }
+      nav ul.open {
+        transform: translateY(0);
+      }
+      nav li a {
+        font-size: 1.2rem;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: none;
+        border: none;
       }
 
       main {
         margin-left: 0;
-        padding: 40px 20px;
+        padding: 5.5rem 1.5rem 2rem;
+      }
+
+      /* Hamburger menu button */
+      #menu-toggle {
+        display: block;
+        cursor: pointer;
+        margin: auto 0;
+        width: 28px;
+        height: 22px;
+        position: relative;
+        user-select: none;
+      }
+      #menu-toggle span,
+      #menu-toggle span::before,
+      #menu-toggle span::after {
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: var(--accent);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+      #menu-toggle span {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      #menu-toggle span::before {
+        content: '';
+        top: -8px;
+      }
+      #menu-toggle span::after {
+        content: '';
+        bottom: -8px;
+      }
+      #menu-toggle.open span {
+        background: transparent;
+      }
+      #menu-toggle.open span::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      #menu-toggle.open span::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+
+      /* Product details toggle for mobile */
+      .product-details {
+        max-height: none !important;
+        opacity: 1 !important;
+        display: none;
+      }
+      .product-details.active {
+        display: block !important;
+      }
+      .product-item:hover,
+      .product-item:focus-within {
+        transform: none;
+        box-shadow: none;
       }
     }
   </style>
 </head>
 <body>
- <header>
-  <nav>
-    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
-    <ul>
-      <li><a href="#welcome">Welcome</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <!-- Dark mode toggle button inside the same nav -->
-    <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
-  </nav>
-</header>
-
-    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Logo" />
-    <ul>
-      <li><a href="#welcome">Welcome</a></li>
+  <nav role="navigation" aria-label="Primary Navigation">
+    <img src="https://raw.githubusercontent.com/Dev11verma/Maatrika/main/Maatrika.jpg" alt="Maatrika Organic Logo" class="logo" tabindex="0" />
+    <div id="menu-toggle" aria-label="Toggle menu" role="button" aria-expanded="false" tabindex="0">
+      <span></span>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#welcome" class="active">Welcome</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#benefits">Benefits</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
@@ -300,82 +519,18 @@
     </ul>
   </nav>
 
-
-  <main>
-    <section id="welcome" class="welcome-hero">
-  <div class="welcome-content">
-    <h1 class="animated-title">Welcome to <span>Maatrika Organic</span></h1>
-    <p class="animated-subtext">Unleashing the power of nature through handmade, chemical-free skincare.</p>
-    <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })" class="welcome-btn">
-      🌿 Explore Our Products
-    </button>
-  </div>
-</section>
-
-
- <style>
-  section {
-    margin-bottom: 50px;
-  }
-  h2 {
-    font-family: Arial, sans-serif;
-    margin-bottom: 20px;
-    color: #2a6ebb;
-  }
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .product-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 160px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
-  }
-  .product-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  .product-name {
-    font-weight: bold;
-    margin: 10px 0;
-    cursor: pointer;
-  }
-  .product-details {
-    display: none; /* Hidden by default */
-    font-size: 14px;
-    color: #555;
-  }
-  .product-details.active {
-    display: block;
-  }
-  button {
-    margin-top: 8px;
-    padding: 6px 12px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    background-color: #2a6ebb;
-    color: white;
-    cursor: pointer;
-  }
-  button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
-</style>
-
-<section id="available-products">
+<main>
+    <section id="welcome">
+      <h1>Welcome to Maatrika Organic</h1>
+      <p>Discover the goodness of nature through handmade, chemical-free skincare designed for all skin types. Your skin deserves purity.</p>
+      <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Explore Products</button>
+    </section>
+   <section id="products">
   <h2>Our Products</h2>
   <div class="product-list">
 
     <div class="product-item">
-      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" />
+      <img src="Rice.jpg" alt="Golden Rice Glow" class="product-image" width="150" height="150" />
       <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
       <div class="product-details">
         <p>Made with nutrient-rich rice extract for glowing skin.</p>
@@ -384,7 +539,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" />
+      <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" class="product-image" width="150" height="150" />
       <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
       <div class="product-details">
         <p>Infused with pure rose extract and floral petals.</p>
@@ -393,7 +548,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" />
+      <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" class="product-image" width="150" height="150" />
       <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
       <div class="product-details">
         <p>A soothing cleanser made with traditional ubtan herbs.</p>
@@ -402,7 +557,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" />
+      <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" class="product-image" width="150" height="150" />
       <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
       <div class="product-details">
         <p>Gentle and moisturizing soap made with pure milk.</p>
@@ -411,7 +566,7 @@
     </div>
 
     <div class="product-item">
-      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" />
+      <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" class="product-image" width="150" height="150" />
       <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
       <div class="product-details">
         <p>Refreshing turmeric formula for radiant and clear skin.</p>
@@ -420,120 +575,146 @@
     </div>
 
     <div class="product-item">
-      <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" class="product-image" />
+      <img src="Neem-soap.jpeg" alt="Herbal Neem Soap" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Herbal Neem Soap</div>
+      <div class="product-details">
+        <p>Coming Soon…</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" width="150" height="150" />
+      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
+      <div class="product-details">
+        <p>Coming Soon…</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="products">
+  <h2>Our Products</h2>
+  <div class="product-list">
+    <!-- Available Products -->
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Golden Rice Glow</div>
+      <div class="product-details">
+        <img src="Rice.jpg" alt="Golden Rice Glow" />
+        <p>Made with nutrient-rich rice extract for glowing skin.</p>
+        <button>Buy Now</button>
+      </div>a
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Radiant Rose Cream</div>
+      <div class="product-details">
+        <img src="Rose-Cream.jpeg" alt="Radiant Rose Cream" />
+        <p>Infused with pure rose extract and floral petals.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Nourishing Ubtan Blend</div>
+      <div class="product-details">
+        <img src="Ubtan-soap.jpeg" alt="Nourishing Ubtan Blend" />
+        <p>A soothing cleanser made with traditional ubtan herbs.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Pure Milk Soap Bar</div>
+      <div class="product-details">
+        <img src="Milk-Soap.jpeg" alt="Pure Milk Soap Bar" />
+        <p>Gentle and moisturizing soap made with pure milk.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <div class="product-name" onclick="toggleDetails(this)">Soothing Turmeric Elixir</div>
+      <div class="product-details">
+        <img src="Turmeric-soap.jpeg" alt="Soothing Turmeric Elixir" />
+        <p>Refreshing turmeric formula for radiant and clear skin.</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+    <div class="product-item">
       <div class="product-name" onclick="toggleDetails(this)">Neem Herbal Bar</div>
       <div class="product-details">
+        <img src="Neem-soap.jpeg" alt="Neem Herbal Bar" />
         <p>Purifying neem formula for acne-prone skin.</p>
         <button>Buy Now</button>
       </div>
     </div>
 
+    <!-- Coming Soon Products -->
     <div class="product-item">
-      <img src="honey-soap.jpeg" alt="Honey Infusion Soap" class="product-image" />
-      <div class="product-name" onclick="toggleDetails(this)">Honey Infusion Soap</div>
-      <div class="product-details">
-        <p>Moisturizing and softening bar with natural honey goodness.</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="coming-soon-products">
-  <h2>Products To Be Announced</h2>
-  <div class="product-list">
-
-    <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Papaya Skin Polish" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Papaya Skin Polish</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Papaya Skin Polish" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
     <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Coffee Scrub Soap" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Coffee Scrub Soap</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Coffee Scrub Soap" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
     <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Charcoal Detox Bar" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Charcoal Detox Bar</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Charcoal Detox Bar" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
     <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Lavender Calming Cream" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Lavender Calming Cream</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Lavender Calming Cream" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
     <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Coconut Nourish Lotion" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Coconut Nourish Lotion</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Coconut Nourish Lotion" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
     <div class="product-item">
-      <img src="images/coming-soon.jpg" alt="Mint Refresh Gel" class="product-image" />
       <div class="product-name" onclick="toggleDetails(this)">Mint Refresh Gel</div>
       <div class="product-details">
+        <img src="image/coming-soon.jpg" alt="Mint Refresh Gel" />
         <p>Coming Soon...</p>
-        <button disabled>Coming Soon</button>
       </div>
     </div>
-
   </div>
 </section>
 
-
-<script>
-  function toggleDetails(element) {
-    const details = element.nextElementSibling;
-    details.classList.toggle('active');
-  }
-</script>
-
-
-
-    <section id="benefits">
-      <h2>Benefits of Choosing Maatrika</h2>
+    <section id="benefits" tabindex="0" aria-label="Benefits of Our Soaps">
+      <h2>Benefits of Our Soaps</h2>
       <div class="grid-2">
-        <div class="card">
-          <h3>Chemical-Free</h3>
-          <p>No sulfates, parabens, or preservatives.</p>
+        <div class="card" tabindex="0">
+          <h3>100% Natural Ingredients</h3>
+          <p>We use only pure organic oils, herbs, and essential oils.</p>
         </div>
-        <div class="card">
-          <h3>Eco-Friendly</h3>
-          <p>Minimal packaging & biodegradable containers.</p>
+        <div class="card" tabindex="0">
+          <h3>Eco-Friendly Packaging</h3>
+          <p>Our packaging is biodegradable and plastic-free.</p>
         </div>
-        <div class="card">
-          <h3>Handcrafted</h3>
-          <p>Made in small batches with love and care.</p>
+        <div class="card" tabindex="0">
+          <h3>Cruelty-Free</h3>
+          <p>No animal testing. Only kindness and care.</p>
         </div>
-        <div class="card">
-          <h3>All Skin Types</h3>
-          <p>Gentle and effective for every skin tone.</p>
+        <div class="card" tabindex="0">
+          <h3>Handmade With Love</h3>
+          <p>Each bar is carefully crafted by skilled artisans.</p>
         </div>
       </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section">
+     <section id="testimonials" class="testimonials-section">
   <h2>What Our Customers Say</h2>
   <div class="testimonial-grid">
 
@@ -620,12 +801,13 @@
       <h4>- Adhrisha Soni</h4>
       <div class="rating">★★★★★</div>
     </div>
+    </section>
 
-  </div>
-</section>
-    <section id="about">
+    <section id="about" tabindex="0" aria-label="About Maatrika Organic">
       <h2>About Us</h2>
-      <p>Maatrika Organic is dedicated to creating pure, handmade skincare products using traditional recipes and the finest natural ingredients. Our commitment to chemical-free formulas ensures healthy skin and a healthier planet.</p>
+      <p>
+        Maatrika Organic is dedicated to crafting the finest natural soaps, blending ancient Indian traditions with modern care. Our commitment is to your skin and the planet.
+      </p>
     </section>
 
     <section id="contact" class="contact-section" tabindex="0" aria-label="Contact Us">
@@ -642,53 +824,110 @@
     <a href="https://wa.me/919202142350?text=Hi" target="_blank" rel="noopener noreferrer">WhatsApp</a>
   </div>
 </section>
+
   </main>
+
+   <!-- ... your existing content ... -->
 
   <footer style="text-align: center; padding: 20px; font-family: 'Arial', sans-serif; color: #555;">
     &copy; 2025 Maatrika Organic. All rights reserved.<br>
     Made with <span style="color: #e25555;">&#10084;&#65039;</span> by Team Maatrika
   </footer>
-<script>
-  // Toggle product details
-  function toggleDetails(element) {
-    const details = element.nextElementSibling;
-    if (details.style.display === 'block') {
-      details.style.display = 'none';
-    } else {
-      details.style.display = 'block';
-    }
-  }
 
-  // Smooth scroll for nav links
-  const navLinks = document.querySelectorAll('nav a');
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      document.getElementById(targetId).scrollIntoView({
-        behavior: 'smooth'
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    });
+
+    // Keyboard accessible toggle for mobile
+    menuToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+
+    // Product details toggle for desktop/mobile
+    const products = document.querySelectorAll('.product-item');
+
+    products.forEach(product => {
+      product.addEventListener('click', () => {
+        const details = product.querySelector('.product-details');
+        const expanded = product.getAttribute('aria-expanded') === 'true' || false;
+
+        // Close all others
+        products.forEach(p => {
+          if (p !== product) {
+            p.setAttribute('aria-expanded', false);
+            p.querySelector('.product-details').classList.remove('active');
+            p.querySelector('.product-details').setAttribute('aria-hidden', 'true');
+          }
+        });
+
+        // Toggle current
+        if (!expanded) {
+          details.classList.add('active');
+          details.setAttribute('aria-hidden', 'false');
+          product.setAttribute('aria-expanded', 'true');
+        } else {
+          details.classList.remove('active');
+          details.setAttribute('aria-hidden', 'true');
+          product.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Keyboard toggle support
+      product.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          product.click();
+        }
       });
     });
-  });
 
-  // Scroll spy
-  const sections = document.querySelectorAll('main section');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
+    // Scrollspy for nav links active state
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('nav ul li a');
+
+    function onScroll() {
+      let scrollPos = window.scrollY + window.innerHeight / 3;
+      sections.forEach(section => {
+        if (
+          scrollPos >= section.offsetTop &&
+          scrollPos < section.offsetTop + section.offsetHeight
+        ) {
+          navAnchors.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').substring(1) === section.id) {
+              a.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', onScroll);
+
+    // Close mobile menu on nav link click
+    navAnchors.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          menuToggle.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', false);
+        }
+      });
     });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').substring(1) === current) {
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
+  </script>
+
+
 </body>
 </html>
