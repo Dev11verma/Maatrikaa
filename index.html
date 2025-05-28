@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0e6cfd3.js" crossorigin="anonymous"></script>
+  <link rel="icon" id="favicon" href="favicon-light.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #f2f4f8;
@@ -33,6 +34,9 @@
       --btn-hover: #1f5f5a;
       --border-radius: 1rem;
       --transition: 0.3s ease;
+      --success-color: #4CAF50;
+      --error-color: #f44336;
+      --stock-color: #f0ad4e;
     }
 
     [data-theme="dark"] {
@@ -45,6 +49,9 @@
       --highlight: #263238;
       --btn-bg: #4dd0e1;
       --btn-hover: #35a4be;
+      --success-color: #66BB6A;
+      --error-color: #ef5350;
+      --stock-color: #ffc107;
     }
 
     * {
@@ -156,7 +163,30 @@
       font-weight: 700;
       margin-bottom: 1rem;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      /* Initial state for hero heading animation */
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+      width: 0;
+      animation: typing 2.5s steps(40, end) forwards;
+      animation-delay: 0.5s;
     }
+
+    .hero h1 span {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
 
     .hero p {
       font-size: 1.3rem;
@@ -187,9 +217,7 @@
     /* Discount Timer Banner */
     .discount-timer-banner {
       background-color: var(--accent);
-      /* Use accent color for banner */
       color: white;
-      /* White text on accent background */
       padding: 1rem 2rem;
       border-radius: var(--border-radius);
       margin-bottom: 3rem;
@@ -201,7 +229,6 @@
       gap: 0.75rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       transition: all 0.5s ease-out;
-      /* Smooth transition for hiding/showing */
     }
 
     .discount-timer-banner.hidden {
@@ -223,7 +250,6 @@
 
     .discount-timer-banner .highlight-text {
       background-color: rgba(255, 255, 255, 0.2);
-      /* Light transparent highlight */
       padding: 0.2rem 0.6rem;
       border-radius: 0.4rem;
       font-weight: 700;
@@ -234,14 +260,12 @@
       font-weight: 700;
       letter-spacing: 1px;
       color: var(--highlight);
-      /* Use highlight color for timer, it's light and contrasts well */
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     [data-theme="dark"] .discount-timer-banner {
       background-color: var(--accent);
       color: var(--card-bg);
-      /* Use dark card background for text in dark mode banner */
     }
 
     [data-theme="dark"] .discount-timer-banner .highlight-text {
@@ -250,7 +274,6 @@
 
     [data-theme="dark"] .discount-timer-banner .countdown-timer {
       color: var(--text);
-      /* Use dark text for timer in dark mode */
     }
 
     /* Cards */
@@ -308,6 +331,7 @@
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      position: relative;
     }
 
     .product-card:hover,
@@ -360,7 +384,6 @@
 
     .product-price del {
       color: #999;
-      /* Slightly dim the old price */
       margin-right: 0.5rem;
       font-size: 0.9em;
     }
@@ -384,8 +407,8 @@
       outline: none;
     }
 
-    .product-coming-soon {
-      background-color: #f0ad4e;
+    .product-out-of-stock {
+      background-color: var(--stock-color);
       color: white;
       font-weight: 700;
       font-size: 0.85rem;
@@ -395,11 +418,14 @@
       top: 12px;
       right: 12px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      z-index: 10;
     }
 
-    .product-card-wrapper {
-      position: relative;
+    .product-out-of-stock+.product-info .product-btn {
+      opacity: 0.7;
+      cursor: not-allowed;
     }
+
 
     /* Testimonials */
     .testimonials {
@@ -487,6 +513,8 @@
       justify-content: center;
       gap: 0.75rem;
       flex-wrap: wrap;
+      position: relative;
+      /* For message positioning */
     }
 
     .newsletter input[type="email"] {
@@ -522,6 +550,57 @@
       outline: none;
     }
 
+    /* Newsletter message */
+    .newsletter-message {
+      position: absolute;
+      bottom: -30px;
+      /* Position below the form */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+      white-space: nowrap;
+      /* Prevent wrapping */
+    }
+
+    .newsletter-message.success {
+      background-color: var(--success-color);
+      color: white;
+      opacity: 1;
+    }
+
+    .newsletter-message.error {
+      background-color: var(--error-color);
+      color: white;
+      opacity: 1;
+    }
+
+    /* Global notification for product added */
+    .notification {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--success-color);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+      z-index: 10002;
+    }
+
+    .notification.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
     /* Footer */
     footer {
       text-align: center;
@@ -531,6 +610,21 @@
       box-shadow: 0 -2px 6px var(--shadow);
       font-size: 0.9rem;
       user-select: none;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      margin: 0 0.7rem;
+      color: var(--text);
+      transition: color var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
     }
 
     /* Floating Order Now Button - Mobile */
@@ -557,6 +651,39 @@
       background-color: var(--btn-hover);
       outline: none;
     }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+      z-index: 9999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--btn-hover);
+    }
+
 
     /* Media Queries */
     @media (max-width: 960px) {
@@ -607,11 +734,23 @@
       .discount-timer-banner .countdown-timer {
         font-size: 1.5rem;
       }
+
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       * {
         transition: none !important;
+      }
+
+      .hero h1 {
+        animation: none;
+        width: auto;
+        white-space: normal;
       }
     }
   </style>
@@ -643,16 +782,10 @@
         Now</button>
     </section>
 
-    ---
-
-    ## Limited-Time Discount Alert!
-
     <section class="discount-timer-banner" aria-live="polite" aria-atomic="true">
       <p class="discount-message">Limited-time offer! <span class="highlight-text">Discount ends soon</span>, hurry up!</p>
       <div class="countdown-timer" id="countdownTimer"></div>
     </section>
-
-    ---
 
     <section class="card" id="products" tabindex="0" aria-label="Our Products">
       <h2>Our Products</h2>
@@ -660,72 +793,97 @@
 
         <div class="product-card-wrapper" aria-label="Neem Soap">
           <article class="product-card" tabindex="0">
-            <img src="Neem-soap.jpeg" alt="Neem Soap" />
+            <img src="Neem-soap.jpeg" alt="Neem Soap" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Neem Soap</h3>
               <p class="product-desc">Purifying neem soap that gently cleanses and protects the skin.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Neem Soap">Order Now</button>
+              <button class="product-btn" data-product-name="Neem Soap" aria-label="Order Neem Soap">Order Now</button>
             </div>
           </article>
         </div>
 
         <div class="product-card-wrapper" aria-label="Turmeric Soap">
           <article class="product-card" tabindex="0">
-            <img src="Turmeric-soap.jpeg" alt="Turmeric Soap" />
+            <img src="Turmeric-soap.jpeg" alt="Turmeric Soap" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Turmeric Soap</h3>
               <p class="product-desc">Brightening soap with the healing power of turmeric and essential oils.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Turmeric Soap">Order Now</button>
+              <button class="product-btn" data-product-name="Turmeric Soap" aria-label="Order Turmeric Soap">Order Now</button>
             </div>
           </article>
         </div>
 
         <div class="product-card-wrapper" aria-label="Milk Soap">
           <article class="product-card" tabindex="0">
-            <img src="Milk-Soap.jpeg" alt="Milk Soap" />
+            <img src="Milk-Soap.jpeg" alt="Milk Soap" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Milk Soap</h3>
               <p class="product-desc">Nourishing milk soap for soft, hydrated, and glowing skin.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Milk Soap">Order Now</button>
+              <button class="product-btn" data-product-name="Milk Soap" aria-label="Order Milk Soap">Order Now</button>
             </div>
           </article>
         </div>
 
         <div class="product-card-wrapper" aria-label="Ubtan Soap">
           <article class="product-card" tabindex="0">
-            <img src="Ubtan-soap.jpeg" alt="Ubtan Soap" />
+            <img src="Ubtan-soap.jpeg" alt="Ubtan Soap" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Ubtan Soap</h3>
               <p class="product-desc">Traditional ubtan soap for detoxifying and refreshing your skin.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Ubtan Soap">Order Now</button>
+              <button class="product-btn" data-product-name="Ubtan Soap" aria-label="Order Ubtan Soap">Order Now</button>
             </div>
           </article>
         </div>
 
         <div class="product-card-wrapper" aria-label="Honey Soap">
           <article class="product-card" tabindex="0">
-            <img src="honey-soap.jpeg" alt="Honey Soap" />
+            <img src="honey-soap.jpeg" alt="Honey Soap" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Honey Soap</h3>
               <p class="product-desc">Moisturizing honey-infused soap for natural glow and softness.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Honey Soap">Order Now</button>
+              <button class="product-btn" data-product-name="Honey Soap" aria-label="Order Honey Soap">Order Now</button>
             </div>
           </article>
         </div>
 
         <div class="product-card-wrapper" aria-label="Rose Cream">
           <article class="product-card" tabindex="0">
-            <img src="Rose-Cream.jpeg" alt="Rose Cream" />
+            <img src="Rose-Cream.jpeg" alt="Rose Cream" loading="lazy" />
             <div class="product-info">
               <h3 class="product-title">Rose Cream</h3>
               <p class="product-desc">Luxurious rose-scented cream for smooth and supple skin.</p>
               <span class="product-price"><del>₹100</del> ₹49/-</span>
-              <button class="product-btn" aria-label="Order Rose Cream">Order Now</button>
+              <button class="product-btn" data-product-name="Rose Cream" aria-label="Order Rose Cream">Order Now</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="product-card-wrapper" aria-label="Lavender Body Oil">
+          <div class="product-out-of-stock">Out of Stock</div>
+          <article class="product-card" tabindex="0">
+            <img src="lavender-body-oil.jpeg" alt="Lavender Body Oil" loading="lazy" />
+            <div class="product-info">
+              <h3 class="product-title">Lavender Body Oil</h3>
+              <p class="product-desc">Relaxing body oil infused with soothing lavender for soft, supple skin.</p>
+              <span class="product-price"><del>₹350</del> ₹299/-</span>
+              <button class="product-btn" data-product-name="Lavender Body Oil" aria-label="Order Lavender Body Oil" disabled>Out of Stock</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="product-card-wrapper" aria-label="Aloe Vera Gel">
+          <article class="product-card" tabindex="0">
+            <img src="aloe-vera-gel.jpeg" alt="Aloe Vera Gel" loading="lazy" />
+            <div class="product-info">
+              <h3 class="product-title">Aloe Vera Gel</h3>
+              <p class="product-desc">Pure aloe vera gel for soothing and hydrating sun-kissed or irritated skin.</p>
+              <span class="product-price"><del>₹200</del> ₹149/-</span>
+              <button class="product-btn" data-product-name="Aloe Vera Gel" aria-label="Order Aloe Vera Gel">Order Now</button>
             </div>
           </article>
         </div>
@@ -758,6 +916,7 @@
         <input type="email" name="email" id="email" placeholder="Your email address" required aria-required="true"
           aria-label="Email address" />
         <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+        <div id="newsletterMessage" class="newsletter-message" aria-live="polite"></div>
       </form>
     </section>
 
@@ -765,8 +924,7 @@
       <h2>Contact Us</h2>
       <p>Questions or custom orders? Reach out to us!</p>
       <ul>
-        <li>Email: <a href="mailto:info@maatrikaorganic.com" tabindex="0">info@maatrikaorganic.com</a></li>
-        <li>Phone: <a href="tel:+919876543210" tabindex="0">+91 98765 43210</a></li>
+        <li>Email: <a href="mailto:we.maatrikaorganic@gmail.com" tabindex="0">we.maatrikaorganic@gmail.com</a></li>
         <li>Address: 123 Organic Lane, Green City, India</li>
       </ul>
     </section>
@@ -777,13 +935,34 @@
     Order Now
   </button>
 
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div id="cartNotification" class="notification" aria-live="polite" aria-atomic="true"></div>
+
   <footer>
     &copy; 2025 Maatrika Organic. All rights reserved.
+    <div class="social-links">
+      <a href="https://www.instagram.com/maatrikaorganic" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit us on Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/maatrikaorganic" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit us on Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/maatrikaorganic" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit us on X (formerly Twitter)">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+    </div>
   </footer>
 
   <script>
-    // Theme toggle with persistence
+    // Theme toggle with persistence and dynamic favicon
     const toggleBtn = document.getElementById("toggleTheme");
+    const favicon = document.getElementById("favicon");
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     function setTheme(theme) {
@@ -791,10 +970,12 @@
         document.documentElement.setAttribute("data-theme", "dark");
         toggleBtn.setAttribute("aria-pressed", "true");
         toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        favicon.href = "favicon-dark.ico"; // Assuming you have a dark mode favicon
       } else {
         document.documentElement.setAttribute("data-theme", "light");
         toggleBtn.setAttribute("aria-pressed", "false");
         toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        favicon.href = "favicon-light.ico"; // Assuming you have a light mode favicon
       }
       localStorage.setItem("theme", theme);
     }
@@ -833,14 +1014,42 @@
     window.addEventListener("scroll", revealOnScroll);
     window.addEventListener("load", revealOnScroll);
 
-    // Newsletter form submission (demo)
+    // Newsletter form submission feedback
     const newsletterForm = document.querySelector(".newsletter form");
+    const newsletterMessage = document.getElementById("newsletterMessage");
+
     newsletterForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const emailInput = newsletterForm.querySelector('input[type="email"]');
-      if (emailInput.value.trim()) {
-        alert(`Thank you for subscribing, ${emailInput.value.trim()}!`);
+      if (emailInput.value.trim() && emailInput.checkValidity()) { // checkValidity for basic email format
+        newsletterMessage.textContent = `Thank you for subscribing, ${emailInput.value.trim()}!`;
+        newsletterMessage.className = 'newsletter-message success'; // Add success class
         newsletterForm.reset();
+      } else {
+        newsletterMessage.textContent = 'Please enter a valid email address.';
+        newsletterMessage.className = 'newsletter-message error'; // Add error class
+      }
+      // Hide message after a few seconds
+      setTimeout(() => {
+        newsletterMessage.className = 'newsletter-message'; // Remove class to hide
+        newsletterMessage.textContent = '';
+      }, 3000);
+    });
+
+    // Product "Order Now" functionality with notification
+    const cartNotification = document.getElementById('cartNotification');
+
+    document.querySelectorAll('.product-btn').forEach(button => {
+      if (button.textContent !== "Out of Stock") { // Only attach listener if not out of stock
+        button.addEventListener('click', (e) => {
+          const productName = e.target.dataset.productName;
+          cartNotification.textContent = `"${productName}" added to cart!`;
+          cartNotification.classList.add('show');
+
+          setTimeout(() => {
+            cartNotification.classList.remove('show');
+          }, 2000); // Notification disappears after 2 seconds
+        });
       }
     });
 
@@ -857,15 +1066,11 @@
       const currentTime = new Date().getTime();
 
       if (!discountEndTime || parseInt(discountEndTime) <= currentTime) {
-        // If no end time or end time has passed, set a new 24-hour timer
         discountEndTime = currentTime + DISCOUNT_DURATION_MS;
         localStorage.setItem(DISCOUNT_END_TIME_KEY, discountEndTime);
-        // Ensure banner is visible if a new timer starts
         discountBanner.classList.remove('hidden');
       } else {
-        // Use existing end time from localStorage
         discountEndTime = parseInt(discountEndTime);
-        // Ensure banner is visible if an existing timer is active
         discountBanner.classList.remove('hidden');
       }
 
@@ -876,8 +1081,8 @@
         if (timeLeft <= 0) {
           clearInterval(countdownInterval);
           countdownTimerElement.innerHTML = "Offer Ended!";
-          discountBanner.classList.add('hidden'); // Hide the banner smoothly
-          localStorage.removeItem(DISCOUNT_END_TIME_KEY); // Clear expired timer
+          discountBanner.classList.add('hidden');
+          localStorage.removeItem(DISCOUNT_END_TIME_KEY);
           return;
         }
 
@@ -888,10 +1093,38 @@
         countdownTimerElement.innerHTML = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       }
 
-      // Initial call and then every second
       updateCountdown();
       countdownInterval = setInterval(updateCountdown, 1000);
     }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+
+    // Back to Top button logic
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) { // Show button after scrolling 300px
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
     // Start the countdown when the page loads
     window.addEventListener('load', startCountdown);
