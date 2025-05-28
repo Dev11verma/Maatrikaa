@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Count Digits</title>
+</head>
+<body>
+  <h2>Count Digits in a Number</h2>
+
+  <input type="number" id="numberInput" placeholder="Enter an integer">
+  <button onclick="countDigits()">Count Digits</button>
+
+  <p id="result"></p>
+
+  <script>
+    function countDigits() {
+      let num = document.getElementById("numberInput").value;
+      num = Math.abs(parseInt(num)); // Convert to positive integer
+      let digitCount = num === 0 ? 1 : num.toString().length;
+      document.getElementById("result").innerText = "Number of digits: " + digitCount;
+    }
+  </script>
+</body>
+</html>
