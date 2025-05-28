@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
@@ -6,8 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maatrika Organic | Handmade Eco-Friendly Skincare</title>
-  <meta name="description" content="Maatrika Organic offers 100% organic, handmade, eco-friendly skincare products made with natural ingredients. Herbal soaps, shampoo bars & more." />
-  <meta name="keywords" content="organic skincare, handmade soap, eco-friendly products, herbal soap, natural moisturizer, shampoo bars" />
+  <meta name="description"
+    content="Maatrika Organic offers 100% organic, handmade, eco-friendly skincare products made with natural ingredients. Herbal soaps, shampoo bars & more." />
+  <meta name="keywords"
+    content="organic skincare, handmade soap, eco-friendly products, herbal soap, natural moisturizer, shampoo bars" />
   <meta name="author" content="Maatrika Organic" />
   <meta property="og:title" content="Maatrika Organic - Natural Handmade Skincare" />
   <meta property="og:description" content="Discover eco-friendly, organic skincare products handcrafted with love." />
@@ -17,10 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0e6cfd3.js" crossorigin="anonymous"></script>
   <style>
     :root {
@@ -139,8 +137,7 @@
     /* Hero Section */
     .hero {
       position: relative;
-      background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80")
-        center/cover no-repeat;
+      background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
       border-radius: var(--border-radius);
       height: 420px;
       color: #fff;
@@ -185,6 +182,75 @@
     .hero button:focus {
       background-color: var(--btn-hover);
       outline: none;
+    }
+
+    /* Discount Timer Banner */
+    .discount-timer-banner {
+      background-color: var(--accent);
+      /* Use accent color for banner */
+      color: white;
+      /* White text on accent background */
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s ease-out;
+      /* Smooth transition for hiding/showing */
+    }
+
+    .discount-timer-banner.hidden {
+      opacity: 0;
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+
+
+    .discount-timer-banner .discount-message {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .discount-timer-banner .highlight-text {
+      background-color: rgba(255, 255, 255, 0.2);
+      /* Light transparent highlight */
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.4rem;
+      font-weight: 700;
+    }
+
+    .discount-timer-banner .countdown-timer {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--highlight);
+      /* Use highlight color for timer, it's light and contrasts well */
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .discount-timer-banner {
+      background-color: var(--accent);
+      color: var(--card-bg);
+      /* Use dark card background for text in dark mode banner */
+    }
+
+    [data-theme="dark"] .discount-timer-banner .highlight-text {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="dark"] .discount-timer-banner .countdown-timer {
+      color: var(--text);
+      /* Use dark text for timer in dark mode */
     }
 
     /* Cards */
@@ -290,6 +356,13 @@
       color: var(--btn-bg);
       font-size: 1.1rem;
       margin-bottom: 1rem;
+    }
+
+    .product-price del {
+      color: #999;
+      /* Slightly dim the old price */
+      margin-right: 0.5rem;
+      font-size: 0.9em;
     }
 
     .product-btn {
@@ -522,6 +595,18 @@
       .order-now-btn {
         display: block;
       }
+
+      .discount-timer-banner {
+        padding: 1rem;
+      }
+
+      .discount-timer-banner .discount-message {
+        font-size: 1rem;
+      }
+
+      .discount-timer-banner .countdown-timer {
+        font-size: 1.5rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -534,116 +619,112 @@
 
 <body>
   <header>
-  <a href="#" class="logo" aria-label="Maatrika Organic Home">
-    <img src="Maatrika.jpg" alt="Maatrika Organic Logo" style="height: 40px; vertical-align: middle;" />
-    <span style="margin-left: 0.5rem; font-weight: 700; font-size: 1.8rem; color: var(--accent);">Maatrika Organic</span>
-  </a>
-
-  <nav>
-    <a href="#products">Products</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#newsletter">Newsletter</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <button class="toggle-theme" aria-label="Toggle Dark Mode">
-    <i class="fas fa-moon"></i>
-  </button>
-</header>
-
+    <div class="logo" tabindex="0" role="link" aria-label="Maatrika Organic homepage" onclick="location.href='#hero'">
+      Maatrika Organic
+    </div>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#hero" tabindex="0">Home</a>
+      <a href="#products" tabindex="0">Products</a>
+      <a href="#testimonials" tabindex="0">Testimonials</a>
+      <a href="#newsletter" tabindex="0">Newsletter</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
+    <button class="toggle-theme" id="toggleTheme" title="Toggle dark mode" aria-pressed="false"
+      aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </header>
 
   <main>
- <section class="hero">
-  <h1>Pure Organic Skincare For Your Natural Beauty</h1>
-  <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
-  <button class="shop-now-btn">Shop Now</button>
-</section>
-
-
-<main>
     <section class="hero" id="hero" role="banner" aria-label="Hero banner">
-      <h2>Pure <span class="highlight">Organic Skincare</span> For Your Natural Beauty</h2>
+      <h1>Pure <span class="highlight">Organic Skincare</span> For Your Natural Beauty</h1>
       <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
-      <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
+      <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop
+        Now</button>
     </section>
+
+    ---
+
+    ## Limited-Time Discount Alert!
+
+    <section class="discount-timer-banner" aria-live="polite" aria-atomic="true">
+      <p class="discount-message">Limited-time offer! <span class="highlight-text">Discount ends soon</span>, hurry up!</p>
+      <div class="countdown-timer" id="countdownTimer"></div>
+    </section>
+
+    ---
 
     <section class="card" id="products" tabindex="0" aria-label="Our Products">
       <h2>Our Products</h2>
       <div class="products-grid">
 
-        <!-- Neem Soap -->
         <div class="product-card-wrapper" aria-label="Neem Soap">
           <article class="product-card" tabindex="0">
             <img src="Neem-soap.jpeg" alt="Neem Soap" />
             <div class="product-info">
               <h3 class="product-title">Neem Soap</h3>
               <p class="product-desc">Purifying neem soap that gently cleanses and protects the skin.</p>
-              <span class="product-price">₹350 / bar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Neem Soap">Order Now</button>
             </div>
           </article>
         </div>
 
-        <!-- Turmeric Soap -->
         <div class="product-card-wrapper" aria-label="Turmeric Soap">
           <article class="product-card" tabindex="0">
             <img src="Turmeric-soap.jpeg" alt="Turmeric Soap" />
             <div class="product-info">
               <h3 class="product-title">Turmeric Soap</h3>
               <p class="product-desc">Brightening soap with the healing power of turmeric and essential oils.</p>
-              <span class="product-price">₹350 / bar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Turmeric Soap">Order Now</button>
             </div>
           </article>
         </div>
 
-        <!-- Milk Soap -->
         <div class="product-card-wrapper" aria-label="Milk Soap">
           <article class="product-card" tabindex="0">
             <img src="Milk-Soap.jpeg" alt="Milk Soap" />
             <div class="product-info">
               <h3 class="product-title">Milk Soap</h3>
               <p class="product-desc">Nourishing milk soap for soft, hydrated, and glowing skin.</p>
-              <span class="product-price">₹400 / bar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Milk Soap">Order Now</button>
             </div>
           </article>
         </div>
 
-        <!-- Ubtan Soap -->
         <div class="product-card-wrapper" aria-label="Ubtan Soap">
           <article class="product-card" tabindex="0">
             <img src="Ubtan-soap.jpeg" alt="Ubtan Soap" />
             <div class="product-info">
               <h3 class="product-title">Ubtan Soap</h3>
               <p class="product-desc">Traditional ubtan soap for detoxifying and refreshing your skin.</p>
-              <span class="product-price">₹380 / bar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Ubtan Soap">Order Now</button>
             </div>
           </article>
         </div>
 
-        <!-- Honey Soap -->
         <div class="product-card-wrapper" aria-label="Honey Soap">
           <article class="product-card" tabindex="0">
             <img src="honey-soap.jpeg" alt="Honey Soap" />
             <div class="product-info">
               <h3 class="product-title">Honey Soap</h3>
               <p class="product-desc">Moisturizing honey-infused soap for natural glow and softness.</p>
-              <span class="product-price">₹360 / bar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Honey Soap">Order Now</button>
             </div>
           </article>
         </div>
 
-        <!-- Rose Cream -->
         <div class="product-card-wrapper" aria-label="Rose Cream">
           <article class="product-card" tabindex="0">
             <img src="Rose-Cream.jpeg" alt="Rose Cream" />
             <div class="product-info">
               <h3 class="product-title">Rose Cream</h3>
               <p class="product-desc">Luxurious rose-scented cream for smooth and supple skin.</p>
-              <span class="product-price">₹500 / jar</span>
+              <span class="product-price"><del>₹100</del> ₹49/-</span>
               <button class="product-btn" aria-label="Order Rose Cream">Order Now</button>
             </div>
           </article>
@@ -651,58 +732,48 @@
 
       </div>
     </section>
-</main>
 
+    <section class="testimonials" id="testimonials" tabindex="0" aria-label="Customer Testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-list">
+        <article class="testimonial" tabindex="0" aria-live="polite">
+          <p>"Absolutely love the herbal soaps! They leave my skin soft and refreshed."</p>
+          <div class="author">— Anjali S.</div>
+        </article>
+        <article class="testimonial" tabindex="0" aria-live="polite">
+          <p>"The shampoo bars are amazing and eco-friendly. My hair feels healthier than ever."</p>
+          <div class="author">— Rahul K.</div>
+        </article>
+        <article class="testimonial" tabindex="0" aria-live="polite">
+          <p>"Natural moisturizers that really work! Perfect for my sensitive skin."</p>
+          <div class="author">— Meera P.</div>
+        </article>
+      </div>
+    </section>
 
-<section class="testimonials" id="testimonials" tabindex="0" aria-label="Customer Testimonials">
-  <h2>What Our Customers Say</h2>
-  <div class="testimonial-list">
-    <article class="testimonial" tabindex="0" aria-live="polite">
-      <p>"Absolutely love the herbal soaps! They leave my skin soft and refreshed."</p>
-      <div class="author">— Anjali S.</div>
-    </article>
-    <article class="testimonial" tabindex="0" aria-live="polite">
-      <p>"The shampoo bars are amazing and eco-friendly. My hair feels healthier than ever."</p>
-      <div class="author">— Rahul K.</div>
-    </article>
-    <article class="testimonial" tabindex="0" aria-live="polite">
-      <p>"Natural moisturizers that really work! Perfect for my sensitive skin."</p>
-      <div class="author">— Meera P.</div>
-    </article>
-  </div>
-</section>
+    <section class="newsletter" id="newsletter" tabindex="0" aria-label="Newsletter Subscription">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to get exclusive offers, product updates, and skincare tips directly to your inbox.</p>
+      <form action="#" method="post" aria-label="Subscribe to newsletter">
+        <input type="email" name="email" id="email" placeholder="Your email address" required aria-required="true"
+          aria-label="Email address" />
+        <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+      </form>
+    </section>
 
-<section class="newsletter" id="newsletter" tabindex="0" aria-label="Newsletter Subscription">
-  <h2>Stay Updated</h2>
-  <p>Subscribe to get exclusive offers, product updates, and skincare tips directly to your inbox.</p>
-  <form action="#" method="post" aria-label="Subscribe to newsletter">
-    <input
-      type="email"
-      name="email"
-      id="email"
-      placeholder="Your email address"
-      required
-      aria-required="true"
-      aria-label="Email address"
-    />
-    <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
-  </form>
-</section>
-
-<section id="contact" tabindex="0" aria-label="Contact Information" class="card">
-  <h2>Contact Us</h2>
-  <p>Questions or custom orders? Reach out to us!</p>
-  <ul>
-    <li>Email: <a href="mailto:info@maatrikaorganic.com" tabindex="0">info@maatrikaorganic.com</a></li>
-    <li>Phone: <a href="tel:+919876543210" tabindex="0">+91 98765 43210</a></li>
-    <li>Address: 123 Organic Lane, Green City, India</li>
-  </ul>
-</section>
-```
-
+    <section id="contact" tabindex="0" aria-label="Contact Information" class="card">
+      <h2>Contact Us</h2>
+      <p>Questions or custom orders? Reach out to us!</p>
+      <ul>
+        <li>Email: <a href="mailto:info@maatrikaorganic.com" tabindex="0">info@maatrikaorganic.com</a></li>
+        <li>Phone: <a href="tel:+919876543210" tabindex="0">+91 98765 43210</a></li>
+        <li>Address: 123 Organic Lane, Green City, India</li>
+      </ul>
+    </section>
   </main>
 
-  <button class="order-now-btn" aria-label="Order Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">
+  <button class="order-now-btn" aria-label="Order Now"
+    onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">
     Order Now
   </button>
 
@@ -772,9 +843,60 @@
         newsletterForm.reset();
       }
     });
+
+    // Discount Timer Logic
+    const countdownTimerElement = document.getElementById('countdownTimer');
+    const discountBanner = document.querySelector('.discount-timer-banner');
+    const DISCOUNT_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    const DISCOUNT_END_TIME_KEY = 'maatrikaDiscountEndTime'; // Key for localStorage
+
+    let countdownInterval;
+
+    function startCountdown() {
+      let discountEndTime = localStorage.getItem(DISCOUNT_END_TIME_KEY);
+      const currentTime = new Date().getTime();
+
+      if (!discountEndTime || parseInt(discountEndTime) <= currentTime) {
+        // If no end time or end time has passed, set a new 24-hour timer
+        discountEndTime = currentTime + DISCOUNT_DURATION_MS;
+        localStorage.setItem(DISCOUNT_END_TIME_KEY, discountEndTime);
+        // Ensure banner is visible if a new timer starts
+        discountBanner.classList.remove('hidden');
+      } else {
+        // Use existing end time from localStorage
+        discountEndTime = parseInt(discountEndTime);
+        // Ensure banner is visible if an existing timer is active
+        discountBanner.classList.remove('hidden');
+      }
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = discountEndTime - now;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          countdownTimerElement.innerHTML = "Offer Ended!";
+          discountBanner.classList.add('hidden'); // Hide the banner smoothly
+          localStorage.removeItem(DISCOUNT_END_TIME_KEY); // Clear expired timer
+          return;
+        }
+
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        countdownTimerElement.innerHTML = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      }
+
+      // Initial call and then every second
+      updateCountdown();
+      countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    // Start the countdown when the page loads
+    window.addEventListener('load', startCountdown);
   </script>
 
 </body>
 
 </html>
-```
