@@ -534,27 +534,31 @@
 
 <body>
   <header>
-    <div class="logo" tabindex="0" role="link" aria-label="Maatrika Organic homepage" onclick="location.href='#hero'">
-      Maatrika Organic
-    </div>
-    <nav role="navigation" aria-label="Main navigation">
-      <a href="#hero" tabindex="0">Home</a>
-      <a href="#products" tabindex="0">Products</a>
-      <a href="#testimonials" tabindex="0">Testimonials</a>
-      <a href="#newsletter" tabindex="0">Newsletter</a>
-      <a href="#contact" tabindex="0">Contact</a>
-    </nav>
-    <button class="toggle-theme" id="toggleTheme" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">
-      <i class="fas fa-moon"></i>
-    </button>
-  </header>
+  <a href="#" class="logo" aria-label="Maatrika Organic Home">
+    <img src="Maatrika.jpg" alt="Maatrika Organic Logo" style="height: 40px; vertical-align: middle;" />
+    <span style="margin-left: 0.5rem; font-weight: 700; font-size: 1.8rem; color: var(--accent);">Maatrika Organic</span>
+  </a>
+
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="toggle-theme" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+</header>
+
 
   <main>
-  <section class="hero" id="hero" role="banner" aria-label="Hero banner">
-    <h1>Pure <span class="highlight">Organic Skincare</span> For Your Natural Beauty</h1>
-    <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
-    <button aria-label="Shop Now" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
-  </section>
+ <section class="hero">
+  <h1>Pure Organic Skincare For Your Natural Beauty</h1>
+  <p>Handmade, eco-friendly, and sustainably sourced skincare products crafted with love and care.</p>
+  <button class="shop-now-btn">Shop Now</button>
+</section>
+
 
 <main>
     <section class="hero" id="hero" role="banner" aria-label="Hero banner">
